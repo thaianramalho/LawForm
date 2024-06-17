@@ -1,0 +1,19 @@
+﻿<Window x:Class="LawForm.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LawForm"
+        mc:Ignorable="d"
+        Title="Login" Height="431" Width="308">
+    <Grid Margin="0,0,0,-6">
+        <Image HorizontalAlignment="Center" Height="70" Margin="0,24,0,0" VerticalAlignment="Top" Width="244" Source="/img/logo.png"/>
+        <Label Content="Usuário" HorizontalAlignment="Left" Margin="14,148,0,0" VerticalAlignment="Top" Height="31" Width="128"/>
+        <TextBox x:Name="login_user" HorizontalAlignment="Center" Margin="0,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" Height="25"/>
+        <Label Content="Senha" HorizontalAlignment="Left" Margin="14,209,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="pass_user" HorizontalAlignment="Center" Margin="0,235,0,0" VerticalAlignment="Top" Width="280
+" Height="25"/>
+        <Button x:Name="entrar" Content="Entrar" Margin="14,275,228,0" VerticalAlignment="Top" Height="32" Click="entrar_Click"/>
+
+    </Grid>
+</Window>

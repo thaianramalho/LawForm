@@ -1,0 +1,68 @@
+﻿<Window x:Class="LawForm.Advogados"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LawForm"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Gerenciamento de Advogados" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Gerenciamento de Advogados"
+               HorizontalAlignment="Stretch" VerticalAlignment="Top"
+               Grid.Row="0" Height="37"
+               FontSize="20" FontWeight="Bold"
+               Background="#FF084F49" FontFamily="Calibri" Foreground="White"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" Margin="10,10,10,135" Grid.RowSpan="2">
+                <Label Content="Nome" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_nome" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="22"/>
+                <Label Content="CPF" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_cpf" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="22"/>
+                <Label Content="E-mail" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_email" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="22"/>
+                <Label Content="Cadastro Nacional dos Advogados" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_cna" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="22"/>
+                <Button x:Name="cadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="0,10,0,0" Click="Cadastrar_Click"/>
+                <Button x:Name="atualizar" Content="Atualizar" HorizontalAlignment="Left" Margin="0,10,0,0" Click="Atualizar_Click" Visibility="Collapsed"/>
+            </StackPanel>
+
+            <DataGrid x:Name="dataGridAdvogados" AutoGenerateColumns="False" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"
+                      SelectionChanged="DataGridAdvogados_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="*"/>
+                    <DataGridTextColumn Header="CPF" Binding="{Binding Cpf}" Width="*"/>
+                    <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="*"/>
+                    <DataGridTextColumn Header="CNA" Binding="{Binding Cna}" Width="*"/>
+                    <DataGridTemplateColumn Header="Ações">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Excluir" Click="Excluir_Click" Tag="{Binding Id}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Image x:Name="logodv" Margin="10,0,0,5" Grid.Row="1" Grid.Column="0" Width="70" Source="/img/logodv.png" HorizontalAlignment="Left" Height="45" VerticalAlignment="Bottom"/>
+        </Grid>
+    </Grid>
+</Window>
