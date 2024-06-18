@@ -5,8 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using LawForm.Model;
 using LawForm.Pdf;
-using PdfSharp.Drawing;
-using PdfSharp.Pdf;
 
 namespace LawForm
 {

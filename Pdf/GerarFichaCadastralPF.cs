@@ -1,8 +1,16 @@
-﻿using LawForm.Model;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using iText.IO.Image;
+using iText.Kernel.Colors;
+using iText.Layout.Borders;
+using iText.Kernel.Geom;
+using iText.Kernel.Events;
+using LawForm.Model;
+using iText.Kernel.Pdf.Canvas;
 
 namespace LawForm.Pdf
 {
@@ -12,101 +20,140 @@ namespace LawForm.Pdf
 
         public GerarFichaCadastralPF(ClientePF clientePF)
         {
-            _clientePF = clientePF;
+            _clientePF = clientePF ?? throw new ArgumentNullException(nameof(clientePF));
         }
 
         public void GerarPdf()
         {
             Debug.WriteLine("GerarPdf method called");
 
-            Document document = new Document(PageSize.A4, 50, 50, 100, 50);
             string filename = $@".\FichaCadastral_{_clientePF.Nome.Replace(" ", "_")}.pdf";
-            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filename, FileMode.Create));
-            writer.PageEvent = new PdfPageEvents();
-
-            document.Open();
-
-            // Cabeçalho
-            string imagePath = "img/varejao-doc-logo.png";
-            if (File.Exists(imagePath))
+            using (PdfWriter writer = new PdfWriter(new FileStream(filename, FileMode.Create, FileAccess.Write)))
             {
-                Image logo = Image.GetInstance(imagePath);
-                logo.ScaleToFit(140f, 120f);
-                logo.Alignment = Element.ALIGN_CENTER;
-                document.Add(logo);
+                PdfDocument pdf = new PdfDocument(writer);
+                Document document = new Document(pdf, PageSize.A4);
+                document.SetMargins(200, 50, 100, 50);  
+
+                pdf.AddEventHandler(PdfDocumentEvent.END_PAGE, new HeaderFooterEventHandler(_clientePF.Nome));
+
+                Color titleColor = new DeviceRgb(0, 0, 0);
+                Color headerColor = new DeviceRgb(90, 90, 90);  
+                Color textColor = new DeviceRgb(60, 60, 60);  
+
+                Paragraph title = new Paragraph("Ficha Cadastral")
+                    .SetFontSize(24)
+                    .SetFontColor(titleColor)
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .SetMarginBottom(20);
+                document.Add(title);
+
+                document.Add(new Paragraph("\n"));
+
+                document.Add(new Paragraph("Dados Pessoais")
+                    .SetFontSize(18)
+                    .SetBold()
+                    .SetFontColor(headerColor)
+                    .SetMarginBottom(10));
+
+                Table dadosPessoaisTable = new Table(UnitValue.CreatePercentArray(new float[] { 1, 3 })).UseAllAvailableWidth().SetBorder(Border.NO_BORDER);
+                AddClienteInfo(dadosPessoaisTable, "Nome", _clientePF.Nome, textColor);
+                AddClienteInfo(dadosPessoaisTable, "Filiação Pai", _clientePF.FiliacaPai, textColor);
+                AddClienteInfo(dadosPessoaisTable, "Filiação Mãe", _clientePF.FiliacaoMae, textColor);
+                AddClienteInfo(dadosPessoaisTable, "Nacionalidade", _clientePF.Nacionalidade, textColor);
+                AddClienteInfo(dadosPessoaisTable, "Estado Civil", _clientePF.EstadoCivil, textColor);
+                AddClienteInfo(dadosPessoaisTable, "Profissão", _clientePF.Profissao, textColor);
+                AddClienteInfo(dadosPessoaisTable, "Documento CI", _clientePF.DocumentoCI, textColor);
+                AddClienteInfo(dadosPessoaisTable, "Documento CPF", _clientePF.DocumentoCPF, textColor);
+                document.Add(dadosPessoaisTable);
+
+                document.Add(new Paragraph("\n"));
+
+                document.Add(new Paragraph("Documentos")
+                    .SetFontSize(18)
+                    .SetBold()
+                    .SetFontColor(headerColor)
+                    .SetMarginBottom(10));
+
+                Table documentosTable = new Table(UnitValue.CreatePercentArray(new float[] { 1, 3 })).UseAllAvailableWidth().SetBorder(Border.NO_BORDER);
+                AddClienteInfo(documentosTable, "Documento PIS", _clientePF.DocumentoPIS, textColor);
+                AddClienteInfo(documentosTable, "Documento CTPS", _clientePF.DocumentoCTPS, textColor);
+                AddClienteInfo(documentosTable, "Documento Série", _clientePF.DocumentoSerie, textColor);
+                document.Add(documentosTable);
+
+                document.Add(new Paragraph("\n"));
+
+                document.Add(new Paragraph("Contato")
+                    .SetFontSize(18)
+                    .SetBold()
+                    .SetFontColor(headerColor)
+                    .SetMarginBottom(10));
+
+                Table contatoTable = new Table(UnitValue.CreatePercentArray(new float[] { 1, 3 })).UseAllAvailableWidth().SetBorder(Border.NO_BORDER);
+                AddClienteInfo(contatoTable, "Endereço", _clientePF.Endereco, textColor);
+                AddClienteInfo(contatoTable, "Telefones", _clientePF.Telefones, textColor);
+                AddClienteInfo(contatoTable, "Naturalidade", _clientePF.Naturalidade, textColor);
+                AddClienteInfo(contatoTable, "Data de Nascimento", _clientePF.DataNascimento.ToString("dd/MM/yyyy"), textColor);
+                AddClienteInfo(contatoTable, "Email", _clientePF.Email, textColor);
+                AddClienteInfo(contatoTable, "Histórico", _clientePF.Historico, textColor);
+                document.Add(contatoTable);
+
+                document.Close();
+                writer.Close();
             }
-
-            Font titleFont = FontFactory.GetFont("Arial", 20, Font.BOLD);
-            Paragraph title = new Paragraph("Ficha Cadastral", titleFont)
-            {
-                Alignment = Element.ALIGN_CENTER
-            };
-            document.Add(title);
-
-            document.Add(new Chunk("\n"));
-
-            // Dados do Cliente
-            Font headerFont = FontFactory.GetFont("Arial", 14, Font.BOLD);
-            Font normalFont = FontFactory.GetFont("Arial", 12, Font.NORMAL);
-
-            document.Add(new Paragraph("Dados Pessoais", headerFont));
-            AddClienteInfo(document, "Nome", _clientePF.Nome, normalFont);
-            AddClienteInfo(document, "Filiação Pai", _clientePF.FiliacaPai, normalFont);
-            AddClienteInfo(document, "Filiação Mãe", _clientePF.FiliacaoMae, normalFont);
-            AddClienteInfo(document, "Nacionalidade", _clientePF.Nacionalidade, normalFont);
-            AddClienteInfo(document, "Estado Civil", _clientePF.EstadoCivil, normalFont);
-            AddClienteInfo(document, "Profissão", _clientePF.Profissao, normalFont);
-            AddClienteInfo(document, "Documento CI", _clientePF.DocumentoCI, normalFont);
-            AddClienteInfo(document, "Documento CPF", _clientePF.DocumentoCPF, normalFont);
-
-            document.Add(new Paragraph("\nDocumentos", headerFont));
-            AddClienteInfo(document, "Documento PIS", _clientePF.DocumentoPIS, normalFont);
-            AddClienteInfo(document, "Documento CTPS", _clientePF.DocumentoCTPS, normalFont);
-            AddClienteInfo(document, "Documento Série", _clientePF.DocumentoSerie, normalFont);
-
-            document.Add(new Paragraph("\nContato", headerFont));
-            AddClienteInfo(document, "Endereço", _clientePF.Endereco, normalFont);
-            AddClienteInfo(document, "Telefones", _clientePF.Telefones, normalFont);
-            AddClienteInfo(document, "Naturalidade", _clientePF.Naturalidade, normalFont);
-            AddClienteInfo(document, "Data de Nascimento", _clientePF.DataNascimento.ToString("dd/MM/yyyy"), normalFont);
-            AddClienteInfo(document, "Email", _clientePF.Email, normalFont);
-            AddClienteInfo(document, "Histórico", _clientePF.Historico, normalFont);
-
-            document.Close();
-            writer.Close();
 
             Debug.WriteLine($"PDF saved to {filename}");
             Process.Start(new ProcessStartInfo { FileName = filename, UseShellExecute = true });
         }
 
-        private void AddClienteInfo(Document document, string label, string value, Font font)
+        private void AddClienteInfo(Table table, string label, string value, Color textColor)
         {
             if (!string.IsNullOrWhiteSpace(value))
             {
-                document.Add(new Paragraph($"{label}: {value}", font));
+                table.AddCell(new Cell().Add(new Paragraph(label)).SetBorder(Border.NO_BORDER).SetPaddingBottom(5).SetPaddingTop(5).SetFontColor(textColor));
+                table.AddCell(new Cell().Add(new Paragraph(value)).SetBorder(Border.NO_BORDER).SetPaddingBottom(5).SetPaddingTop(5).SetFontColor(textColor));
             }
         }
 
-        private class PdfPageEvents : PdfPageEventHelper
+        private class HeaderFooterEventHandler : IEventHandler
         {
-            public override void OnEndPage(PdfWriter writer, Document document)
+            private readonly string _nomeCliente;
+
+            public HeaderFooterEventHandler(string nomeCliente)
             {
-                PdfPTable footerTable = new PdfPTable(1);
-                footerTable.TotalWidth = document.PageSize.Width - 100;
-                footerTable.DefaultCell.Border = 0;
-                footerTable.AddCell(new PdfPCell(new Phrase("Assinatura do Cliente:", FontFactory.GetFont("Arial", 12, Font.NORMAL)))
+                _nomeCliente = nomeCliente;
+            }
+
+            public void HandleEvent(Event @event)
+            {
+                PdfDocumentEvent docEvent = (PdfDocumentEvent)@event;
+                PdfDocument pdfDoc = docEvent.GetDocument();
+                PdfPage page = docEvent.GetPage();
+                Rectangle pageSize = page.GetPageSize();
+                PdfCanvas pdfCanvas = new PdfCanvas(page.NewContentStreamAfter(), page.GetResources(), pdfDoc);
+
+                float xHeader = pageSize.GetWidth() / 2;
+                float yHeader = pageSize.GetTop() - 50;
+
+                float xFooter = pageSize.GetWidth() / 2;
+                float yFooter = pageSize.GetBottom() + 30;
+
+                Canvas canvas = new Canvas(pdfCanvas, new Rectangle(0, 0, pageSize.GetWidth(), pageSize.GetHeight()));
+                canvas.SetFontSize(12);
+
+                string imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\img\varejao-doc-logo.png");
+                if (File.Exists(imagePath))
                 {
-                    Border = 0,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    PaddingTop = 30
-                });
-                footerTable.AddCell(new PdfPCell(new Phrase("__________________________________________", FontFactory.GetFont("Arial", 12, Font.NORMAL)))
-                {
-                    Border = 0,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    PaddingBottom = 30
-                });
-                footerTable.WriteSelectedRows(0, -1, 50, 50, writer.DirectContent);
+                    ImageData imageData = ImageDataFactory.Create(imagePath);
+                    Image logo = new Image(imageData);
+                    logo.ScaleToFit(300f, 300f); 
+                    logo.SetFixedPosition(xHeader - 150, yHeader - 100); 
+                    canvas.Add(logo);
+                }
+
+                canvas.ShowTextAligned(new Paragraph("______________________"), xFooter, yFooter, TextAlignment.CENTER);
+                canvas.ShowTextAligned(new Paragraph(_nomeCliente), xFooter, yFooter - 15, TextAlignment.CENTER);
+
+                canvas.Close();
             }
         }
     }
