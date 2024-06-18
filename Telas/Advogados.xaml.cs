@@ -20,7 +20,15 @@ namespace LawForm
         {
             using (var context = new DataContext())
             {
-                dataGridAdvogados.ItemsSource = context.Advogado.ToList();
+                var advogados = context.Advogado.ToList();
+                if (advogados.Any(a => a == null || string.IsNullOrWhiteSpace(a.Nome) || string.IsNullOrWhiteSpace(a.Cpf) || string.IsNullOrWhiteSpace(a.Email) || string.IsNullOrWhiteSpace(a.Cna)))
+                {
+                    MessageBox.Show("Existem dados inválidos na lista de advogados.");
+                }
+                else
+                {
+                    dataGridAdvogados.ItemsSource = advogados;
+                }
             }
         }
 
@@ -49,7 +57,6 @@ namespace LawForm
                 context.SaveChanges();
             }
 
-            // MessageBox.Show("Advogado cadastrado com sucesso!");
             LimparCampos();
             CarregarDados();
         }
@@ -76,7 +83,6 @@ namespace LawForm
                 }
             }
 
-            // MessageBox.Show("Advogado atualizado com sucesso!");
             LimparCampos();
             CarregarDados();
             cadastrar.Visibility = Visibility.Visible;
@@ -101,14 +107,8 @@ namespace LawForm
                         {
                             context.Advogado.Remove(advogado);
                             context.SaveChanges();
-                            // MessageBox.Show("Advogado excluído com sucesso!");
                             CarregarDados();
                         }
-                        else
-                        {
-                            return;
-                        }
-                        
                     }
                 }
             }
@@ -118,15 +118,25 @@ namespace LawForm
         {
             if (dataGridAdvogados.SelectedItem != null)
             {
-                var advogado = (Advogado)dataGridAdvogados.SelectedItem;
-                advogadoIdSelecionado = advogado.Id;
-                txt_nome.Text = advogado.Nome;
-                txt_cpf.Text = advogado.Cpf;
-                txt_email.Text = advogado.Email;
-                txt_cna.Text = advogado.Cna;
+                var advogado = dataGridAdvogados.SelectedItem as Advogado;
+                if (advogado != null)
+                {
+                    advogadoIdSelecionado = advogado.Id;
+                    txt_nome.Text = advogado.Nome;
+                    txt_cpf.Text = advogado.Cpf;
+                    txt_email.Text = advogado.Email;
+                    txt_cna.Text = advogado.Cna;
 
-                cadastrar.Visibility = Visibility.Collapsed;
-                atualizar.Visibility = Visibility.Visible;
+                    cadastrar.Visibility = Visibility.Collapsed;
+                    atualizar.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                LimparCampos();
+                advogadoIdSelecionado = null;
+                cadastrar.Visibility = Visibility.Visible;
+                atualizar.Visibility = Visibility.Collapsed;
             }
         }
 

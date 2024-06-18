@@ -63,3 +63,6 @@ C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\MainPage.g.cs
 C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\Advogados.baml
 C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\Login.baml
 C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\MainPage.baml
+C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\LawForm.sourcelink.json
+C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\ClientesPF.g.cs
+C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\ClientesPF.baml

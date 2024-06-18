@@ -46,8 +46,9 @@
             </StackPanel>
 
             <DataGrid x:Name="dataGridAdvogados" AutoGenerateColumns="False" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
-                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"
-                      SelectionChanged="DataGridAdvogados_SelectionChanged">
+          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"
+          SelectionChanged="DataGridAdvogados_SelectionChanged"
+          CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="*"/>
                     <DataGridTextColumn Header="CPF" Binding="{Binding Cpf}" Width="*"/>
@@ -62,6 +63,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+
             <Image x:Name="logodv" Margin="10,0,0,5" Grid.Row="1" Grid.Column="0" Width="70" Source="/img/logodv.png" HorizontalAlignment="Left" Height="45" VerticalAlignment="Bottom"/>
         </Grid>
     </Grid>
