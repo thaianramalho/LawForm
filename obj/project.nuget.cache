@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "RHesiryUmOlABjfjJiY3mWWTMWIxvLkJ2ut3VTmMHQbj746D6N1wA8Y9p+8yvCJYm5xa3+ZcCkxgSm38Mv6xvw==",
+  "dgSpecHash": "d1p05XTlsqmFGg7qabqyCkpbqeNAB6nDTJo8bDYPL9BKjZNLJ8cni9y16KxFIYM75AP7HAdklDitQ3FJBSvEEw==",
   "success": true,
   "projectFilePath": "C:\\Users\\admin\\source\\repos\\LawForm\\LawForm.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\itextsharp\\5.5.13.4\\itextsharp.5.5.13.4.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.6\\microsoft.data.sqlite.core.8.0.6.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.6\\microsoft.entityframeworkcore.8.0.6.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.6\\microsoft.entityframeworkcore.abstractions.8.0.6.nupkg.sha512",
@@ -20,6 +22,7 @@
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\pdfsharp\\6.1.0\\pdfsharp.6.1.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.8\\sqlitepclraw.bundle_e_sqlite3.2.1.8.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\sqlitepclraw.core\\2.1.8\\sqlitepclraw.core.2.1.8.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.8\\sqlitepclraw.lib.e_sqlite3.2.1.8.nupkg.sha512",
@@ -28,5 +31,16 @@
     "C:\\Users\\admin\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'iTextSharp 5.5.13.4' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net8.0-windows7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "iTextSharp",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }

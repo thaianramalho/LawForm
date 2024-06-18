@@ -28,7 +28,6 @@
 
         <StackPanel Grid.Row="2" Margin="10">
             <WrapPanel>
-                <!-- Campos de entrada, dispostos horizontalmente -->
                 <StackPanel Margin="5">
                     <Label Content="Nome"/>
                     <TextBox x:Name="txt_nome" Width="200"/>
@@ -102,6 +101,8 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,10,0,10">
                 <Button x:Name="cadastrar" Content="Cadastrar" Margin="5" Click="Cadastrar_Click"/>
                 <Button x:Name="atualizar" Content="Atualizar" Margin="5" Click="Atualizar_Click" Visibility="Collapsed"/>
+                                <Button x:Name="emitirFicha" Content="Emitir ficha cadastral" Margin="5" Click="EmitirFicha_Click"/>
+
             </StackPanel>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">

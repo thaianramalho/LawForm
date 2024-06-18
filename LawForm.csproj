@@ -14,8 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="iTextSharp" Version="5.5.13.4" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="8.0.6" />
+    <PackageReference Include="PDFsharp" Version="6.1.0" />
     <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.8" />
   </ItemGroup>
 

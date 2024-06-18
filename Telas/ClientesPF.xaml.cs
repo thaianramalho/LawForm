@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using LawForm.Model;
+using LawForm.Pdf;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 
 namespace LawForm
 {
@@ -182,33 +186,29 @@ namespace LawForm
 
         private void DataGridClientesPF_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dataGridClientesPF.SelectedItem != null)
+            if (dataGridClientesPF.SelectedItem is ClientePF clientePF)
             {
-                var clientePF = dataGridClientesPF.SelectedItem as ClientePF;
-                if (clientePF != null)
-                {
-                    clientePFIdSelecionado = clientePF.Id;
-                    txt_nome.Text = clientePF.Nome;
-                    txt_filiacaoPai.Text = clientePF.FiliacaPai;
-                    txt_filiacaoMae.Text = clientePF.FiliacaoMae;
-                    txt_nacionalidade.Text = clientePF.Nacionalidade;
-                    txt_estadoCivil.Text = clientePF.EstadoCivil;
-                    txt_profissao.Text = clientePF.Profissao;
-                    txt_documentoCI.Text = clientePF.DocumentoCI;
-                    txt_documentoCPF.Text = clientePF.DocumentoCPF;
-                    txt_documentoPIS.Text = clientePF.DocumentoPIS;
-                    txt_documentoCTPS.Text = clientePF.DocumentoCTPS;
-                    txt_documentoSerie.Text = clientePF.DocumentoSerie;
-                    txt_endereco.Text = clientePF.Endereco;
-                    txt_telefones.Text = clientePF.Telefones;
-                    txt_naturalidade.Text = clientePF.Naturalidade;
-                    txt_dataNascimento.Text = clientePF.DataNascimento.ToString("yyyy-MM-dd");
-                    txt_email.Text = clientePF.Email;
-                    txt_historico.Text = clientePF.Historico;
+                clientePFIdSelecionado = clientePF.Id;
+                txt_nome.Text = clientePF.Nome ?? string.Empty;
+                txt_filiacaoPai.Text = clientePF.FiliacaPai ?? string.Empty;
+                txt_filiacaoMae.Text = clientePF.FiliacaoMae ?? string.Empty;
+                txt_nacionalidade.Text = clientePF.Nacionalidade ?? string.Empty;
+                txt_estadoCivil.Text = clientePF.EstadoCivil ?? string.Empty;
+                txt_profissao.Text = clientePF.Profissao ?? string.Empty;
+                txt_documentoCI.Text = clientePF.DocumentoCI ?? string.Empty;
+                txt_documentoCPF.Text = clientePF.DocumentoCPF ?? string.Empty;
+                txt_documentoPIS.Text = clientePF.DocumentoPIS ?? string.Empty;
+                txt_documentoCTPS.Text = clientePF.DocumentoCTPS ?? string.Empty;
+                txt_documentoSerie.Text = clientePF.DocumentoSerie ?? string.Empty;
+                txt_endereco.Text = clientePF.Endereco ?? string.Empty;
+                txt_telefones.Text = clientePF.Telefones ?? string.Empty;
+                txt_naturalidade.Text = clientePF.Naturalidade ?? string.Empty;
+                txt_dataNascimento.Text = clientePF.DataNascimento.ToString("yyyy-MM-dd");
+                txt_email.Text = clientePF.Email ?? string.Empty;
+                txt_historico.Text = clientePF.Historico ?? string.Empty;
 
-                    cadastrar.Visibility = Visibility.Collapsed;
-                    atualizar.Visibility = Visibility.Visible;
-                }
+                cadastrar.Visibility = Visibility.Collapsed;
+                atualizar.Visibility = Visibility.Visible;
             }
             else
             {
@@ -218,6 +218,8 @@ namespace LawForm
                 atualizar.Visibility = Visibility.Collapsed;
             }
         }
+
+
 
         private void LimparCampos()
         {
@@ -283,5 +285,34 @@ namespace LawForm
             txtBuscar.Clear();
             Buscar_Click(sender, e);
         }
+
+        private void EmitirFicha_Click(object sender, RoutedEventArgs e)
+        {
+            if (clientePFIdSelecionado == null)
+            {
+                MessageBox.Show("Nenhum cliente selecionado.");
+                return;
+            }
+
+            using (var context = new DataContext())
+            {
+                var clientePF = context.ClientePF.Find(clientePFIdSelecionado);
+                if (clientePF != null)
+                {
+                    var gerarFicha = new GerarFichaCadastralPF(clientePF);
+                    gerarFicha.GerarPdf();
+                }
+                else
+                {
+                    Debug.WriteLine("ClientePF não encontrado.");
+                }
+            }
+        }
+
+
+
+
+
+
     }
 }

@@ -2,6 +2,31 @@
   "version": 3,
   "targets": {
     "net8.0-windows7.0": {
+      "BouncyCastle.Cryptography/2.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "iTextSharp/5.5.13.4": {
+        "type": "package",
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.4.0"
+        },
+        "compile": {
+          "lib/net461/itextsharp.dll": {}
+        },
+        "runtime": {
+          "lib/net461/itextsharp.dll": {}
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.6": {
         "type": "package",
         "dependencies": {
@@ -289,6 +314,60 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "PDFsharp/6.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/PdfSharp.Charting.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net6.0/PdfSharp.Quality.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net6.0/PdfSharp.Snippets.dll": {
+            "related": ".pdb"
+          },
+          "lib/net6.0/PdfSharp.System.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net6.0/PdfSharp.WPFonts.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net6.0/PdfSharp.dll": {
+            "related": ".Charting.pdb;.Charting.xml;.pdb;.Quality.pdb;.Quality.xml;.Snippets.pdb;.System.pdb;.System.xml;.WPFonts.pdb;.WPFonts.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/PdfSharp.Charting.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net6.0/PdfSharp.Quality.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net6.0/PdfSharp.Snippets.dll": {
+            "related": ".pdb"
+          },
+          "lib/net6.0/PdfSharp.System.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net6.0/PdfSharp.WPFonts.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net6.0/PdfSharp.dll": {
+            "related": ".Charting.pdb;.Charting.xml;.pdb;.Quality.pdb;.Quality.xml;.Snippets.pdb;.System.pdb;.System.xml;.WPFonts.pdb;.WPFonts.xml;.xml"
+          }
+        },
+        "resource": {
+          "lib/net6.0/de/PdfSharp.Charting.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net6.0/de/PdfSharp.resources.dll": {
+            "locale": "de"
+          }
+        }
+      },
       "SQLitePCLRaw.bundle_e_sqlite3/2.1.8": {
         "type": "package",
         "dependencies": {
@@ -477,6 +556,42 @@
     }
   },
   "libraries": {
+    "BouncyCastle.Cryptography/2.4.0": {
+      "sha512": "SwXsAV3sMvAU/Nn31pbjhWurYSjJ+/giI/0n6tCrYoupEK34iIHCuk3STAd9fx8yudM85KkLSVdn951vTng/vQ==",
+      "type": "package",
+      "path": "bouncycastle.cryptography/2.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "bouncycastle.cryptography.2.4.0.nupkg.sha512",
+        "bouncycastle.cryptography.nuspec",
+        "lib/net461/BouncyCastle.Cryptography.dll",
+        "lib/net461/BouncyCastle.Cryptography.xml",
+        "lib/net6.0/BouncyCastle.Cryptography.dll",
+        "lib/net6.0/BouncyCastle.Cryptography.xml",
+        "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
+        "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
+        "packageIcon.png"
+      ]
+    },
+    "iTextSharp/5.5.13.4": {
+      "sha512": "/cvCNv8AJ+XuD99u4NfHSSxkBJKTdvP36wcfQF9V1Cjzi1ycyFSa4vJ64a3DhFVUTKVO60WF8OmAqngQDTHgYA==",
+      "type": "package",
+      "path": "itextsharp/5.5.13.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "gnu-agpl-v3.0.md",
+        "itextsharp.5.5.13.4.nupkg.sha512",
+        "itextsharp.nuspec",
+        "lib/net461/iTextSharp.xml",
+        "lib/net461/itextsharp.dll",
+        "notice.txt"
+      ]
+    },
     "Microsoft.Data.Sqlite.Core/8.0.6": {
       "sha512": "umhZ0ZF2RI81rGFTnYmCxI+Euj4Aqe/6Y4+8CxN9OVJNGDNIqB5laJ3wxQTU8zXCcm2k9F7FL+/6RVoOT4z1Fw==",
       "type": "package",
@@ -938,6 +1053,57 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "PDFsharp/6.1.0": {
+      "sha512": "Tvc3mzowW3XG6AWk4gRi836Hy7FwqhXirpjQRH6JJll0vxiz5yWbAVjr0iV5yKRnPCwVbjOfwjfaMlwYzcPASg==",
+      "type": "package",
+      "path": "pdfsharp/6.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "images/PDFsharp-128x128.png",
+        "lib/net6.0/PdfSharp.Charting.dll",
+        "lib/net6.0/PdfSharp.Charting.pdb",
+        "lib/net6.0/PdfSharp.Charting.xml",
+        "lib/net6.0/PdfSharp.Quality.dll",
+        "lib/net6.0/PdfSharp.Quality.pdb",
+        "lib/net6.0/PdfSharp.Quality.xml",
+        "lib/net6.0/PdfSharp.Snippets.dll",
+        "lib/net6.0/PdfSharp.Snippets.pdb",
+        "lib/net6.0/PdfSharp.System.dll",
+        "lib/net6.0/PdfSharp.System.pdb",
+        "lib/net6.0/PdfSharp.System.xml",
+        "lib/net6.0/PdfSharp.WPFonts.dll",
+        "lib/net6.0/PdfSharp.WPFonts.pdb",
+        "lib/net6.0/PdfSharp.WPFonts.xml",
+        "lib/net6.0/PdfSharp.dll",
+        "lib/net6.0/PdfSharp.pdb",
+        "lib/net6.0/PdfSharp.xml",
+        "lib/net6.0/de/PdfSharp.Charting.resources.dll",
+        "lib/net6.0/de/PdfSharp.resources.dll",
+        "lib/netstandard2.0/PdfSharp.Charting.dll",
+        "lib/netstandard2.0/PdfSharp.Charting.pdb",
+        "lib/netstandard2.0/PdfSharp.Charting.xml",
+        "lib/netstandard2.0/PdfSharp.Quality.dll",
+        "lib/netstandard2.0/PdfSharp.Quality.pdb",
+        "lib/netstandard2.0/PdfSharp.Quality.xml",
+        "lib/netstandard2.0/PdfSharp.Snippets.dll",
+        "lib/netstandard2.0/PdfSharp.Snippets.pdb",
+        "lib/netstandard2.0/PdfSharp.System.dll",
+        "lib/netstandard2.0/PdfSharp.System.pdb",
+        "lib/netstandard2.0/PdfSharp.System.xml",
+        "lib/netstandard2.0/PdfSharp.WPFonts.dll",
+        "lib/netstandard2.0/PdfSharp.WPFonts.pdb",
+        "lib/netstandard2.0/PdfSharp.WPFonts.xml",
+        "lib/netstandard2.0/PdfSharp.dll",
+        "lib/netstandard2.0/PdfSharp.pdb",
+        "lib/netstandard2.0/PdfSharp.xml",
+        "lib/netstandard2.0/de/PdfSharp.Charting.resources.dll",
+        "lib/netstandard2.0/de/PdfSharp.resources.dll",
+        "pdfsharp.6.1.0.nupkg.sha512",
+        "pdfsharp.nuspec"
+      ]
+    },
     "SQLitePCLRaw.bundle_e_sqlite3/2.1.8": {
       "sha512": "zIk4j5WLCj9E/8FV3Zy31ca/5klVKoeiT3bZoY8bOlNpDt/CE1+EUxmeoZ5IW09T2OXG3AwKICcqCaS6aHEPWw==",
       "type": "package",
@@ -1162,7 +1328,9 @@
     "net8.0-windows7.0": [
       "Microsoft.Data.Sqlite.Core >= 8.0.6",
       "Microsoft.EntityFrameworkCore.Sqlite.Core >= 8.0.6",
-      "SQLitePCLRaw.bundle_e_sqlite3 >= 2.1.8"
+      "PDFsharp >= 6.1.0",
+      "SQLitePCLRaw.bundle_e_sqlite3 >= 2.1.8",
+      "iTextSharp >= 5.5.13.4"
     ]
   },
   "packageFolders": {
@@ -1217,9 +1385,17 @@
             "target": "Package",
             "version": "[8.0.6, )"
           },
+          "PDFsharp": {
+            "target": "Package",
+            "version": "[6.1.0, )"
+          },
           "SQLitePCLRaw.bundle_e_sqlite3": {
             "target": "Package",
             "version": "[2.1.8, )"
+          },
+          "iTextSharp": {
+            "target": "Package",
+            "version": "[5.5.13.4, )"
           }
         },
         "imports": [
@@ -1244,5 +1420,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'iTextSharp 5.5.13.4' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net8.0-windows7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "iTextSharp",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }
