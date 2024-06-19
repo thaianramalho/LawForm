@@ -32,7 +32,7 @@ namespace LawForm.Pdf
             {
                 PdfDocument pdf = new PdfDocument(writer);
                 Document document = new Document(pdf, PageSize.A4);
-                document.SetMargins(160, 50, 100, 50);
+                document.SetMargins(160, 25, 100, 25);
 
                 pdf.AddEventHandler(PdfDocumentEvent.END_PAGE, new HeaderFooterEventHandler(_clientePF.Nome));
 
@@ -43,7 +43,7 @@ namespace LawForm.Pdf
                 Color whiteColor = new DeviceRgb(255, 255, 255);  // Branco para o texto
 
                 Paragraph title = new Paragraph("Ficha Cadastral de Clientes")
-                    .SetFontSize(24)
+                    .SetFontSize(22)
                     .SetFontColor(titleColor)
                     .SetTextAlignment(TextAlignment.CENTER);
                 document.Add(title);
@@ -104,7 +104,7 @@ namespace LawForm.Pdf
         {
             if (!string.IsNullOrWhiteSpace(value))
             {
-                table.AddCell(new Cell().Add(new Paragraph(label)).SetBorder(Border.NO_BORDER).SetPaddingBottom(5).SetPaddingTop(5).SetFontColor(textColor));
+                table.AddCell(new Cell().Add(new Paragraph(label)).SetBorder(Border.NO_BORDER).SetPaddingBottom(5).SetPaddingTop(5).SetFontColor(textColor).SetBold());
                 table.AddCell(new Cell().Add(new Paragraph(value)).SetBorder(Border.NO_BORDER).SetPaddingBottom(5).SetPaddingTop(5).SetFontColor(textColor));
             }
         }
@@ -118,7 +118,8 @@ namespace LawForm.Pdf
                     .SetBorder(Border.NO_BORDER)
                     .SetPaddingBottom(5)
                     .SetPaddingTop(5)
-                    .SetFontColor(textColor));
+                    .SetFontColor(textColor)
+                    .SetBold());
 
                 table.AddCell(new Cell(1, 1)
                     .SetBorder(Border.NO_BORDER));
@@ -139,7 +140,7 @@ namespace LawForm.Pdf
         private void AddSectionTitle(Document document, string titleText, Color backgroundColor, Color textColor)
         {
             Paragraph titleParagraph = new Paragraph(titleText)
-                .SetFontSize(18)
+                .SetFontSize(16)
                 .SetBold()
                 .SetFontColor(textColor)
                 .SetBackgroundColor(backgroundColor)
