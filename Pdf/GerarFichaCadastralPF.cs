@@ -104,7 +104,7 @@ namespace LawForm.Pdf
         {
             if (!string.IsNullOrWhiteSpace(value))
             {
-                table.AddCell(new Cell().Add(new Paragraph(label)).SetBorder(Border.NO_BORDER).SetPaddingBottom(5).SetPaddingTop(5).SetFontColor(textColor).SetBold());
+                table.AddCell(new Cell().Add(new Paragraph(label)).SetBorder(Border.NO_BORDER).SetPaddingBottom(5).SetPaddingTop(5).SetFontColor(textColor).SetFontSize(12).SetBold());
                 table.AddCell(new Cell().Add(new Paragraph(value)).SetBorder(Border.NO_BORDER).SetPaddingBottom(5).SetPaddingTop(5).SetFontColor(textColor));
             }
         }
@@ -119,6 +119,7 @@ namespace LawForm.Pdf
                     .SetPaddingBottom(5)
                     .SetPaddingTop(5)
                     .SetFontColor(textColor)
+                    .SetFontSize(12)
                     .SetBold());
 
                 table.AddCell(new Cell(1, 1)

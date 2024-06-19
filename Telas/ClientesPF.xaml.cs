@@ -32,9 +32,13 @@ namespace LawForm
             {
                 var query = context.ClientePF.AsQueryable();
 
+                var clientes = query
+                                .OrderBy(c => c.Nome)
+                                .ToList();
+
                 if (!string.IsNullOrWhiteSpace(filtroBusca))
                 {
-                    query = query.Where(c =>
+                    clientes = clientes.Where(c =>
                         c.Nome.Contains(filtroBusca) ||
                         c.FiliacaPai.Contains(filtroBusca) ||
                         c.FiliacaoMae.Contains(filtroBusca) ||
@@ -51,22 +55,22 @@ namespace LawForm
                         c.Naturalidade.Contains(filtroBusca) ||
                         c.Email.Contains(filtroBusca) ||
                         c.Historico.Contains(filtroBusca) ||
-                        c.DataNascimento.ToString("dd/MM/yyyy").Contains(filtroBusca));
+                        c.DataNascimentoFormatada.Contains(filtroBusca)).ToList();
                 }
 
-                var totalRegistros = query.Count();
+                var totalRegistros = clientes.Count();
                 totalPaginas = (int)Math.Ceiling((double)totalRegistros / tamanhoPagina);
 
-                var clientes = query
-                                .OrderBy(c => c.Nome)
-                                .Skip((paginaAtual - 1) * tamanhoPagina)
-                                .Take(tamanhoPagina)
-                                .ToList();
+                var clientesPaginados = clientes
+                                        .Skip((paginaAtual - 1) * tamanhoPagina)
+                                        .Take(tamanhoPagina)
+                                        .ToList();
 
-                dataGridClientesPF.ItemsSource = clientes;
+                dataGridClientesPF.ItemsSource = clientesPaginados;
                 AtualizarTextoPaginaAtual();
             }
         }
+
 
 
         private void AtualizarTextoPaginaAtual()
@@ -204,26 +208,26 @@ namespace LawForm
 
         private void DataGridClientesPF_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dataGridClientesPF.SelectedItem is ClientePF clientePF)
+            if (dataGridClientesPF.SelectedItem is ClientePF clienteSelecionado)
             {
-                clientePFIdSelecionado = clientePF.Id;
-                txt_nome.Text = clientePF.Nome ?? string.Empty;
-                txt_filiacaoPai.Text = clientePF.FiliacaPai ?? string.Empty;
-                txt_filiacaoMae.Text = clientePF.FiliacaoMae ?? string.Empty;
-                txt_nacionalidade.Text = clientePF.Nacionalidade ?? string.Empty;
-                txt_estadoCivil.Text = clientePF.EstadoCivil ?? string.Empty;
-                txt_profissao.Text = clientePF.Profissao ?? string.Empty;
-                txt_documentoCI.Text = clientePF.DocumentoCI ?? string.Empty;
-                txt_documentoCPF.Text = clientePF.DocumentoCPF ?? string.Empty;
-                txt_documentoPIS.Text = clientePF.DocumentoPIS ?? string.Empty;
-                txt_documentoCTPS.Text = clientePF.DocumentoCTPS ?? string.Empty;
-                txt_documentoSerie.Text = clientePF.DocumentoSerie ?? string.Empty;
-                txt_endereco.Text = clientePF.Endereco ?? string.Empty;
-                txt_telefones.Text = clientePF.Telefones ?? string.Empty;
-                txt_naturalidade.Text = clientePF.Naturalidade ?? string.Empty;
-                txt_dataNascimento.Text = clientePF.DataNascimento.ToString("dd/MM/yyyy") ?? string.Empty;
-                txt_email.Text = clientePF.Email ?? string.Empty;
-                txt_historico.Text = clientePF.Historico ?? string.Empty;
+                clientePFIdSelecionado = clienteSelecionado.Id;
+                txt_nome.Text = clienteSelecionado.Nome ?? string.Empty;
+                txt_filiacaoPai.Text = clienteSelecionado.FiliacaPai ?? string.Empty;
+                txt_filiacaoMae.Text = clienteSelecionado.FiliacaoMae ?? string.Empty;
+                txt_nacionalidade.Text = clienteSelecionado.Nacionalidade ?? string.Empty;
+                txt_estadoCivil.Text = clienteSelecionado.EstadoCivil ?? string.Empty;
+                txt_profissao.Text = clienteSelecionado.Profissao ?? string.Empty;
+                txt_documentoCI.Text = clienteSelecionado.DocumentoCI ?? string.Empty;
+                txt_documentoCPF.Text = clienteSelecionado.DocumentoCPF ?? string.Empty;
+                txt_documentoPIS.Text = clienteSelecionado.DocumentoPIS ?? string.Empty;
+                txt_documentoCTPS.Text = clienteSelecionado.DocumentoCTPS ?? string.Empty;
+                txt_documentoSerie.Text = clienteSelecionado.DocumentoSerie ?? string.Empty;
+                txt_endereco.Text = clienteSelecionado.Endereco ?? string.Empty;
+                txt_telefones.Text = clienteSelecionado.Telefones ?? string.Empty;
+                txt_naturalidade.Text = clienteSelecionado.Naturalidade ?? string.Empty;
+                txt_dataNascimento.Text = clienteSelecionado.DataNascimentoFormatada ?? string.Empty; 
+                txt_email.Text = clienteSelecionado.Email ?? string.Empty;
+                txt_historico.Text = clienteSelecionado.Historico ?? string.Empty;
 
                 cadastrar.Visibility = Visibility.Collapsed;
                 atualizar.Visibility = Visibility.Visible;
@@ -236,6 +240,7 @@ namespace LawForm
                 atualizar.Visibility = Visibility.Collapsed;
             }
         }
+
 
 
 
@@ -301,8 +306,11 @@ namespace LawForm
         private void LimparBusca_Click(object sender, RoutedEventArgs e)
         {
             txtBuscar.Clear();
-            Buscar_Click(sender, e);
+            filtroBusca = string.Empty;
+            paginaAtual = 1;
+            CarregarDados();
         }
+
 
         private void EmitirFicha_Click(object sender, RoutedEventArgs e)
         {
