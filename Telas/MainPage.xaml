@@ -30,5 +30,15 @@
                HorizontalAlignment="Right" VerticalAlignment="Bottom"
                Margin="10"
                Height="45" Width="67" Source="/img/logodv.png"/>
+        
+        <Button x:Name="clientesPFScreen" Content="Clientes PF" 
+            Grid.Column="0"
+            HorizontalAlignment="Left" Margin="88,0,0,0" VerticalAlignment="Center" 
+            Click="clientesPFScreen_Click"/>
+
+        <Button x:Name="clientesPJScreen" Content="Clientes PJ" 
+     Grid.Column="0"
+     HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Center" 
+     Click="clientesPJScreen_Click"/>
     </Grid>
 </Window>

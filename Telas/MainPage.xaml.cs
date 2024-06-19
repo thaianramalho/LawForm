@@ -26,5 +26,19 @@ namespace LawForm
             Advogados telaAdvogados = new Advogados();
             telaAdvogados.Show();
         }
+
+        private void clientesPFScreen_Click(object sender, RoutedEventArgs e)
+        {
+            ClientesPF clientesPF = new ClientesPF();
+            clientesPF.Show();
+        }
+
+        private void clientesPJScreen_Click(object sender, RoutedEventArgs e)
+        {
+            ClientesPJ clientesPJ = new ClientesPJ();
+            clientesPJ.Show();
+        }
+
+        
     }
 }
