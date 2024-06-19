@@ -35,6 +35,14 @@
           }
         }
       },
+      "itext.font-asian/8.0.4": {
+        "runtime": {
+          "lib/netstandard2.0/itext.font_asian.dll": {
+            "assemblyVersion": "8.0.4.0",
+            "fileVersion": "8.0.4.0"
+          }
+        }
+      },
       "itext7/7.1.13": {
         "dependencies": {
           "Common.Logging": "3.4.1",
@@ -91,6 +99,11 @@
           }
         }
       },
+      "itext7.font-asian/8.0.4": {
+        "dependencies": {
+          "itext.font-asian": "8.0.4"
+        }
+      },
       "Microsoft.CSharp/4.0.1": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -125,6 +138,14 @@
           "lib/net8.0/Microsoft.Data.Sqlite.dll": {
             "assemblyVersion": "8.0.6.0",
             "fileVersion": "8.0.624.26904"
+          }
+        }
+      },
+      "Microsoft.DotNet.PlatformAbstractions/3.1.6": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll": {
+            "assemblyVersion": "3.1.6.0",
+            "fileVersion": "3.100.620.31604"
           }
         }
       },
@@ -1562,12 +1583,26 @@
       "path": "common.logging.core/3.4.1",
       "hashPath": "common.logging.core.3.4.1.nupkg.sha512"
     },
+    "itext.font-asian/8.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MGwfOA5au5HHtPdwUUBI6exRaVJ30DRHP9CNdlyFYPlA9ZU+ukr4BCved7ZoDOzQy6tP+gOY3tqiq/spgzdQKw==",
+      "path": "itext.font-asian/8.0.4",
+      "hashPath": "itext.font-asian.8.0.4.nupkg.sha512"
+    },
     "itext7/7.1.13": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-QCGOQtzr4EB+co2U/JmefiAjmU3f2c0c73QCJR95b5rcz9KR5qcbv9jtOfJn/7f6nTZPaTdO2hmgOMM6QvLGKw==",
       "path": "itext7/7.1.13",
       "hashPath": "itext7.7.1.13.nupkg.sha512"
+    },
+    "itext7.font-asian/8.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eR4Isrj9J8BvP4H7pIz0cdwSrvTLG44/9aIA2HaaYe35pGos5RF/sni5/jaEa5JEjpcGJ06bbuog58YWnV1Haw==",
+      "path": "itext7.font-asian/8.0.4",
+      "hashPath": "itext7.font-asian.8.0.4.nupkg.sha512"
     },
     "Microsoft.CSharp/4.0.1": {
       "type": "package",
@@ -1582,6 +1617,13 @@
       "sha512": "sha512-umhZ0ZF2RI81rGFTnYmCxI+Euj4Aqe/6Y4+8CxN9OVJNGDNIqB5laJ3wxQTU8zXCcm2k9F7FL+/6RVoOT4z1Fw==",
       "path": "microsoft.data.sqlite.core/8.0.6",
       "hashPath": "microsoft.data.sqlite.core.8.0.6.nupkg.sha512"
+    },
+    "Microsoft.DotNet.PlatformAbstractions/3.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jek4XYaQ/PGUwDKKhwR8K47Uh1189PFzMeLqO83mXrXQVIpARZCcfuDedH50YDTepBkfijCZN5U/vZi++erxtg==",
+      "path": "microsoft.dotnet.platformabstractions/3.1.6",
+      "hashPath": "microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore/8.0.6": {
       "type": "package",

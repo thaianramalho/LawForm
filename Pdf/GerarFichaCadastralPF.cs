@@ -185,7 +185,7 @@ namespace LawForm.Pdf
                     canvas.Add(logo);
                 }
 
-                canvas.ShowTextAligned(new Paragraph("____________________"), xFooter, yFooter, TextAlignment.CENTER);
+                canvas.ShowTextAligned(new Paragraph("______________________________"), xFooter, yFooter, TextAlignment.CENTER);
                 canvas.ShowTextAligned(new Paragraph(_nomeCliente), xFooter, yFooter - 15, TextAlignment.CENTER);
 
                 canvas.Close();

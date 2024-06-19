@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LawForm"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Gerenciamento de Clientes PF" Height="800" Width="1200">
+        Title="Gerenciamento de Clientes" Height="800" Width="1200">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -18,7 +18,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Gerenciamento de Clientes PF"
+        <Label Content="Gerenciamento de Clientes (Pessoa Física)"
                HorizontalAlignment="Stretch" VerticalAlignment="Top"
                Grid.Row="0" Height="37"
                FontSize="20" FontWeight="Bold"
@@ -131,7 +131,7 @@
                     <DataGridTextColumn Header="Endereço" Binding="{Binding Endereco}" Width="*"/>
                     <DataGridTextColumn Header="Telefones" Binding="{Binding Telefones}" Width="*"/>
                     <DataGridTextColumn Header="Naturalidade" Binding="{Binding Naturalidade}" Width="*"/>
-                    <DataGridTextColumn Header="Data de Nascimento" Binding="{Binding DataNascimento}" Width="*"/>
+                    <DataGridTextColumn Header="Data de Nascimento" Binding="{Binding DataNascimentoFormatada}" Width="*"/>
                     <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
                     <DataGridTextColumn Header="Histórico" Binding="{Binding Historico}" Width="*"/>
                     <DataGridTemplateColumn Header="Ações">

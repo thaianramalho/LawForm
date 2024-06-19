@@ -29,5 +29,8 @@ namespace LawForm.Model
         public string? Email { get; set; }
         public required string Historico { get; set; }
 
+        public string DataNascimentoFormatada => DataNascimento.ToString("dd/MM/yyyy");
+
+
     }
 }

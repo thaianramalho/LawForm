@@ -16,6 +16,10 @@ namespace LawForm
         private int totalPaginas;
         private string filtroBusca = string.Empty;
 
+        public DateOnly DataNascimento { get; set; }
+        public string DataNascimentoFormatada => DataNascimento.ToString("dd/MM/yyyy");
+
+
         public ClientesPF()
         {
             InitializeComponent();
@@ -47,7 +51,7 @@ namespace LawForm
                         c.Naturalidade.Contains(filtroBusca) ||
                         c.Email.Contains(filtroBusca) ||
                         c.Historico.Contains(filtroBusca) ||
-                        c.DataNascimento.ToString().Contains(filtroBusca));
+                        c.DataNascimento.ToString("dd/MM/yyyy").Contains(filtroBusca));
                 }
 
                 var totalRegistros = query.Count();
@@ -63,6 +67,7 @@ namespace LawForm
                 AtualizarTextoPaginaAtual();
             }
         }
+
 
         private void AtualizarTextoPaginaAtual()
         {
@@ -85,6 +90,13 @@ namespace LawForm
                 return;
             }
 
+            DateOnly dataNascimento;
+            if (!DateOnly.TryParseExact(txt_dataNascimento.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dataNascimento))
+            {
+                MessageBox.Show("Data de Nascimento inválida. Use o formato dd/MM/yyyy.");
+                return;
+            }
+
             using (var context = new DataContext())
             {
                 var clientePF = new ClientePF
@@ -103,7 +115,7 @@ namespace LawForm
                     Endereco = txt_endereco.Text,
                     Telefones = txt_telefones.Text,
                     Naturalidade = txt_naturalidade.Text,
-                    DataNascimento = DateOnly.Parse(txt_dataNascimento.Text),
+                    DataNascimento = dataNascimento,
                     Email = txt_email.Text,
                     Historico = txt_historico.Text
                 };
@@ -121,6 +133,13 @@ namespace LawForm
             if (clientePFIdSelecionado == null)
             {
                 MessageBox.Show("Nenhum cliente selecionado para atualização.");
+                return;
+            }
+
+            DateOnly dataNascimento;
+            if (!DateOnly.TryParseExact(txt_dataNascimento.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dataNascimento))
+            {
+                MessageBox.Show("Data de Nascimento inválida. Use o formato dd/MM/yyyy.");
                 return;
             }
 
@@ -143,7 +162,7 @@ namespace LawForm
                     clientePF.Endereco = txt_endereco.Text;
                     clientePF.Telefones = txt_telefones.Text;
                     clientePF.Naturalidade = txt_naturalidade.Text;
-                    clientePF.DataNascimento = DateOnly.Parse(txt_dataNascimento.Text);
+                    clientePF.DataNascimento = dataNascimento;
                     clientePF.Email = txt_email.Text;
                     clientePF.Historico = txt_historico.Text;
 
@@ -157,6 +176,7 @@ namespace LawForm
             atualizar.Visibility = Visibility.Collapsed;
             clientePFIdSelecionado = null;
         }
+
 
         private void Excluir_Click(object sender, RoutedEventArgs e)
         {
@@ -201,7 +221,7 @@ namespace LawForm
                 txt_endereco.Text = clientePF.Endereco ?? string.Empty;
                 txt_telefones.Text = clientePF.Telefones ?? string.Empty;
                 txt_naturalidade.Text = clientePF.Naturalidade ?? string.Empty;
-                txt_dataNascimento.Text = clientePF.DataNascimento.ToString("yyyy-MM-dd");
+                txt_dataNascimento.Text = clientePF.DataNascimento.ToString("dd/MM/yyyy") ?? string.Empty;
                 txt_email.Text = clientePF.Email ?? string.Empty;
                 txt_historico.Text = clientePF.Historico ?? string.Empty;
 
