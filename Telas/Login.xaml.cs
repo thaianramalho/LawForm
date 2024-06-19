@@ -49,10 +49,9 @@ namespace LawForm
 
         private void cadastrar_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
             Cadastrar telaCadastro = new Cadastrar();
+            this.Close();
             telaCadastro.Show();
-            telaCadastro.Closed += (s, args) => this.Show();
         }
     }
 }

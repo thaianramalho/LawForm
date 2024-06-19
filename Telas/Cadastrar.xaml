@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LawForm.Telas"
         mc:Ignorable="d"
-        Title="Cadastrar" Height="450" Width="360" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Cadastrar" Height="450" Width="360" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Telas/logodv.png">
     <Grid>
         <Grid Height="425" VerticalAlignment="Top">
             <Image HorizontalAlignment="Center" Height="70" Margin="0,24,0,0" VerticalAlignment="Top" Width="244" Source="/img/logo.png"/>
@@ -14,7 +14,8 @@
             <Label Content="Senha" HorizontalAlignment="Left" Margin="14,231,0,0" VerticalAlignment="Top" FontSize="14"/>
             <PasswordBox x:Name="txt_senha" HorizontalAlignment="Center" Margin="0,257,0,0" VerticalAlignment="Top" Width="332" Height="25"/>
             <Button x:Name="cadastrar" Content="Cadastrar" Margin="14,297,14,0" VerticalAlignment="Top" Height="32" Click="cadastrar_Click" IsDefault="true"/>
-            <Label Content="Entre com os dados de acesso" HorizontalAlignment="Center" Margin="0,123,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+            <Label Content="Insira os dados abaixo" HorizontalAlignment="Center" Margin="0,123,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+            <Button x:Name="loginScreen" Content="Voltar para o login" Margin="115,374,115,0" VerticalAlignment="Top" Height="25" Click="loginScreen_Click"/>
         </Grid>
     </Grid>
 </Window>

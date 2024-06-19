@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LawForm"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="Login" Height="425" Width="360" ResizeMode="NoResize" SizeToContent="Height" Icon="/Telas/logodv.png">
+        Title="Entrar" Height="425" Width="360" ResizeMode="NoResize" SizeToContent="Height" Icon="/Telas/logodv.png">
     <Grid Height="425" VerticalAlignment="Top">
         <Image HorizontalAlignment="Center" Height="70" Margin="0,24,0,0" VerticalAlignment="Top" Width="244" Source="/img/logo.png"/>
         <Label Content="Usuário" HorizontalAlignment="Left" Margin="14,170,0,0" VerticalAlignment="Top" Height="31" Width="61" FontSize="14"/>

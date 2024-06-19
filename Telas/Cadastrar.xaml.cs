@@ -45,12 +45,12 @@ namespace LawForm.Telas
                 context.User.Add(user);
                 context.SaveChanges();
                 MessageBox.Show("Usuário cadastrado com sucesso.");
-                loginScreen(sender, e);
+                loginScreen_Click(sender, e);
 
             }
         }
 
-        private void loginScreen(object sender, RoutedEventArgs e)
+        private void loginScreen_Click(object sender, RoutedEventArgs e)
         {
 
             Login telaLogin = new Login();
