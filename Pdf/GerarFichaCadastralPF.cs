@@ -32,28 +32,31 @@ namespace LawForm.Pdf
             {
                 PdfDocument pdf = new PdfDocument(writer);
                 Document document = new Document(pdf, PageSize.A4);
-                document.SetMargins(200, 50, 100, 50);  
+                document.SetMargins(160, 50, 100, 50);
 
                 pdf.AddEventHandler(PdfDocumentEvent.END_PAGE, new HeaderFooterEventHandler(_clientePF.Nome));
 
                 Color titleColor = new DeviceRgb(0, 0, 0);
-                Color headerColor = new DeviceRgb(90, 90, 90);  
-                Color textColor = new DeviceRgb(60, 60, 60);  
+                Color headerColor = new DeviceRgb(90, 90, 90);  // Cinza médio
+                Color textColor = new DeviceRgb(60, 60, 60);  // Cinza mais escuro
+                Color backgroundColor = new DeviceRgb(128, 128, 128);  // Cinza médio para o fundo
+                Color whiteColor = new DeviceRgb(255, 255, 255);  // Branco para o texto
 
-                Paragraph title = new Paragraph("Ficha Cadastral")
+                Paragraph title = new Paragraph("Ficha Cadastral de Clientes")
                     .SetFontSize(24)
                     .SetFontColor(titleColor)
-                    .SetTextAlignment(TextAlignment.CENTER)
-                    .SetMarginBottom(20);
+                    .SetTextAlignment(TextAlignment.CENTER);
                 document.Add(title);
+
+                Paragraph subtitle = new Paragraph("Pessoa Física")
+                    .SetFontSize(18)
+                    .SetFontColor(titleColor)
+                    .SetTextAlignment(TextAlignment.CENTER);
+                document.Add(subtitle);
 
                 document.Add(new Paragraph("\n"));
 
-                document.Add(new Paragraph("Dados Pessoais")
-                    .SetFontSize(18)
-                    .SetBold()
-                    .SetFontColor(headerColor)
-                    .SetMarginBottom(10));
+                AddSectionTitle(document, "Dados Pessoais", backgroundColor, whiteColor);
 
                 Table dadosPessoaisTable = new Table(UnitValue.CreatePercentArray(new float[] { 1, 3 })).UseAllAvailableWidth().SetBorder(Border.NO_BORDER);
                 AddClienteInfo(dadosPessoaisTable, "Nome", _clientePF.Nome, textColor);
@@ -68,11 +71,7 @@ namespace LawForm.Pdf
 
                 document.Add(new Paragraph("\n"));
 
-                document.Add(new Paragraph("Documentos")
-                    .SetFontSize(18)
-                    .SetBold()
-                    .SetFontColor(headerColor)
-                    .SetMarginBottom(10));
+                AddSectionTitle(document, "Documentos", backgroundColor, whiteColor);
 
                 Table documentosTable = new Table(UnitValue.CreatePercentArray(new float[] { 1, 3 })).UseAllAvailableWidth().SetBorder(Border.NO_BORDER);
                 AddClienteInfo(documentosTable, "Documento PIS", _clientePF.DocumentoPIS, textColor);
@@ -82,11 +81,7 @@ namespace LawForm.Pdf
 
                 document.Add(new Paragraph("\n"));
 
-                document.Add(new Paragraph("Contato")
-                    .SetFontSize(18)
-                    .SetBold()
-                    .SetFontColor(headerColor)
-                    .SetMarginBottom(10));
+                AddSectionTitle(document, "Contato", backgroundColor, whiteColor);
 
                 Table contatoTable = new Table(UnitValue.CreatePercentArray(new float[] { 1, 3 })).UseAllAvailableWidth().SetBorder(Border.NO_BORDER);
                 AddClienteInfo(contatoTable, "Endereço", _clientePF.Endereco, textColor);
@@ -94,7 +89,7 @@ namespace LawForm.Pdf
                 AddClienteInfo(contatoTable, "Naturalidade", _clientePF.Naturalidade, textColor);
                 AddClienteInfo(contatoTable, "Data de Nascimento", _clientePF.DataNascimento.ToString("dd/MM/yyyy"), textColor);
                 AddClienteInfo(contatoTable, "Email", _clientePF.Email, textColor);
-                AddClienteInfo(contatoTable, "Histórico", _clientePF.Historico, textColor);
+                AddHistoricoInfo(contatoTable, "Histórico", _clientePF.Historico, textColor);
                 document.Add(contatoTable);
 
                 document.Close();
@@ -112,6 +107,45 @@ namespace LawForm.Pdf
                 table.AddCell(new Cell().Add(new Paragraph(label)).SetBorder(Border.NO_BORDER).SetPaddingBottom(5).SetPaddingTop(5).SetFontColor(textColor));
                 table.AddCell(new Cell().Add(new Paragraph(value)).SetBorder(Border.NO_BORDER).SetPaddingBottom(5).SetPaddingTop(5).SetFontColor(textColor));
             }
+        }
+
+        private void AddHistoricoInfo(Table table, string label, string value, Color textColor)
+        {
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                table.AddCell(new Cell(1, 1)
+                    .Add(new Paragraph(label))
+                    .SetBorder(Border.NO_BORDER)
+                    .SetPaddingBottom(5)
+                    .SetPaddingTop(5)
+                    .SetFontColor(textColor));
+
+                table.AddCell(new Cell(1, 1)
+                    .SetBorder(Border.NO_BORDER));
+
+                Cell valueCell = new Cell(1, table.GetNumberOfColumns())
+                    .Add(new Paragraph(value))
+                    .SetBorder(Border.NO_BORDER)
+                    .SetPaddingBottom(5)
+                    .SetPaddingTop(5)
+                    .SetFontColor(textColor);
+
+                table.AddCell(valueCell);
+            }
+        }
+
+
+
+        private void AddSectionTitle(Document document, string titleText, Color backgroundColor, Color textColor)
+        {
+            Paragraph titleParagraph = new Paragraph(titleText)
+                .SetFontSize(18)
+                .SetBold()
+                .SetFontColor(textColor)
+                .SetBackgroundColor(backgroundColor)
+                .SetPadding(5)
+                .SetMarginBottom(10);
+            document.Add(titleParagraph);
         }
 
         private class HeaderFooterEventHandler : IEventHandler
@@ -145,12 +179,12 @@ namespace LawForm.Pdf
                 {
                     ImageData imageData = ImageDataFactory.Create(imagePath);
                     Image logo = new Image(imageData);
-                    logo.ScaleToFit(300f, 300f); 
-                    logo.SetFixedPosition(xHeader - 150, yHeader - 100); 
+                    logo.ScaleToFit(300f, 300f);
+                    logo.SetFixedPosition(xHeader - 150, yHeader - 100);
                     canvas.Add(logo);
                 }
 
-                canvas.ShowTextAligned(new Paragraph("______________________"), xFooter, yFooter, TextAlignment.CENTER);
+                canvas.ShowTextAligned(new Paragraph("____________________"), xFooter, yFooter, TextAlignment.CENTER);
                 canvas.ShowTextAligned(new Paragraph(_nomeCliente), xFooter, yFooter - 15, TextAlignment.CENTER);
 
                 canvas.Close();
