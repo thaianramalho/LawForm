@@ -20,7 +20,7 @@ namespace LawForm.Pdf
         {
             Debug.WriteLine("GerarPdf method called");
 
-            string filename = @".\DocumentosNecessariosParaProcesso.pdf";
+            string filename = @".\relacao_documentos.pdf";
             using (PdfWriter writer = new PdfWriter(new FileStream(filename, FileMode.Create, FileAccess.Write)))
             {
                 PdfDocument pdf = new PdfDocument(writer);
@@ -34,7 +34,7 @@ namespace LawForm.Pdf
                 Color backgroundColor = new DeviceRgb(128, 128, 128);  // Cinza médio para o fundo
                 Color whiteColor = new DeviceRgb(255, 255, 255);  // Branco para o texto
 
-                Paragraph title = new Paragraph("Documentos Necessários para o Processo")
+                Paragraph title = new Paragraph("Relação de Documentos")
                     .SetFontSize(22)
                     .SetFontColor(titleColor)
                     .SetTextAlignment(TextAlignment.CENTER);
@@ -162,7 +162,7 @@ namespace LawForm.Pdf
                 Canvas canvas = new Canvas(pdfCanvas, new Rectangle(0, 0, pageSize.GetWidth(), pageSize.GetHeight()));
                 canvas.SetFontSize(12);
 
-                string imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\img\logo.png");
+                string imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\img\varejao-doc-logo.png");
                 if (File.Exists(imagePath))
                 {
                     ImageData imageData = ImageDataFactory.Create(imagePath);
@@ -171,9 +171,6 @@ namespace LawForm.Pdf
                     logo.SetFixedPosition(xHeader - 150, yHeader - 100);
                     canvas.Add(logo);
                 }
-
-                canvas.ShowTextAligned(new Paragraph("______________________________"), xFooter, yFooter, TextAlignment.CENTER);
-
                 canvas.Close();
             }
         }

@@ -1,4 +1,6 @@
 ﻿using LawForm.Model;
+using LawForm.Pdf;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 
@@ -33,6 +35,15 @@ namespace LawForm
             ClientesPJ clientesPJ = new ClientesPJ();
             clientesPJ.Show();
         }
+
+        private void emitirListaDocumentos_Click(object sender, RoutedEventArgs e)
+        {
+            var gerarDocumentosNecessarios = new GerarDocumentosNecessarios();
+            gerarDocumentosNecessarios.GerarPdf();
+             
+        }
+
+
 
         private int GetAdvogadosCount()
         {
