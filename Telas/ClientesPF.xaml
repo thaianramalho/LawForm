@@ -94,8 +94,9 @@
                 </StackPanel>
                 <StackPanel Margin="5">
                     <Label Content="Histórico"/>
-                    <TextBox x:Name="txt_historico" Width="200"/>
+                    <TextBox x:Name="txt_historico" Width="830" Height="50" TextWrapping="Wrap" AcceptsReturn="True"/>
                 </StackPanel>
+
             </WrapPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,10,0,10">
@@ -115,7 +116,7 @@
             <DataGrid x:Name="dataGridClientesPF" AutoGenerateColumns="False" 
                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"
                       SelectionChanged="DataGridClientesPF_SelectionChanged"
-                      CanUserAddRows="False" IsReadOnly="True">
+                      CanUserAddRows="False" IsReadOnly="True" RowHeight="25">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="*"/>
                     <DataGridTextColumn Header="Filiação Pai" Binding="{Binding FiliacaPai}" Width="*"/>
@@ -133,7 +134,7 @@
                     <DataGridTextColumn Header="Naturalidade" Binding="{Binding Naturalidade}" Width="*"/>
                     <DataGridTextColumn Header="Data de Nascimento" Binding="{Binding DataNascimentoFormatada}" Width="*"/>
                     <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
-                    <DataGridTextColumn Header="Histórico" Binding="{Binding Historico}" Width="*"/>
+                    <DataGridTextColumn Header="Histórico" Binding="{Binding Historico}"  Width="*"/>
                     <DataGridTemplateColumn Header="Ações">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
