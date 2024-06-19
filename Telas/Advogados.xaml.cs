@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using LawForm.Model;
 using System.Windows;
 using System.Windows.Controls;
-using LawForm.Model;
 
 namespace LawForm
 {

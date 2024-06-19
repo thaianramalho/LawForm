@@ -1,10 +1,8 @@
-﻿using System;
+﻿using LawForm.Model;
+using LawForm.Pdf;
 using System.Diagnostics;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using LawForm.Model;
-using LawForm.Pdf;
 
 namespace LawForm
 {
@@ -36,26 +34,28 @@ namespace LawForm
                                 .OrderBy(c => c.Nome)
                                 .ToList();
 
+                filtroBusca = filtroBusca.ToLower();
+
                 if (!string.IsNullOrWhiteSpace(filtroBusca))
                 {
                     clientes = clientes.Where(c =>
-                        c.Nome.Contains(filtroBusca) ||
-                        c.FiliacaPai.Contains(filtroBusca) ||
-                        c.FiliacaoMae.Contains(filtroBusca) ||
-                        c.Nacionalidade.Contains(filtroBusca) ||
-                        c.EstadoCivil.Contains(filtroBusca) ||
-                        c.Profissao.Contains(filtroBusca) ||
-                        c.DocumentoCI.Contains(filtroBusca) ||
-                        c.DocumentoCPF.Contains(filtroBusca) ||
-                        c.DocumentoPIS.Contains(filtroBusca) ||
-                        c.DocumentoCTPS.Contains(filtroBusca) ||
-                        c.DocumentoSerie.Contains(filtroBusca) ||
-                        c.Endereco.Contains(filtroBusca) ||
-                        c.Telefones.Contains(filtroBusca) ||
-                        c.Naturalidade.Contains(filtroBusca) ||
-                        c.Email.Contains(filtroBusca) ||
-                        c.Historico.Contains(filtroBusca) ||
-                        c.DataNascimentoFormatada.Contains(filtroBusca)).ToList();
+                        c.Nome.ToLower().Contains(filtroBusca) ||
+                        c.FiliacaPai.ToLower().Contains(filtroBusca) ||
+                        c.FiliacaoMae.ToLower().Contains(filtroBusca) ||
+                        c.Nacionalidade.ToLower().Contains(filtroBusca) ||
+                        c.EstadoCivil.ToLower().Contains(filtroBusca) ||
+                        c.Profissao.ToLower().Contains(filtroBusca) ||
+                        c.DocumentoCI.ToLower().Contains(filtroBusca) ||
+                        c.DocumentoCPF.ToLower().Contains(filtroBusca) ||
+                        c.DocumentoPIS.ToLower().Contains(filtroBusca) ||
+                        c.DocumentoCTPS.ToLower().Contains(filtroBusca) ||
+                        c.DocumentoSerie.ToLower().Contains(filtroBusca) ||
+                        c.Endereco.ToLower().Contains(filtroBusca) ||
+                        c.Telefones.ToLower().Contains(filtroBusca) ||
+                        c.Naturalidade.ToLower().Contains(filtroBusca) ||
+                        c.Email.ToLower().Contains(filtroBusca) ||
+                        c.Historico.ToLower().Contains(filtroBusca) ||
+                        c.DataNascimentoFormatada.ToLower().Contains(filtroBusca)).ToList();
                 }
 
                 var totalRegistros = clientes.Count();
@@ -100,6 +100,7 @@ namespace LawForm
                 MessageBox.Show("Data de Nascimento inválida. Use o formato dd/MM/yyyy.");
                 return;
             }
+
 
             using (var context = new DataContext())
             {
@@ -225,7 +226,7 @@ namespace LawForm
                 txt_endereco.Text = clienteSelecionado.Endereco ?? string.Empty;
                 txt_telefones.Text = clienteSelecionado.Telefones ?? string.Empty;
                 txt_naturalidade.Text = clienteSelecionado.Naturalidade ?? string.Empty;
-                txt_dataNascimento.Text = clienteSelecionado.DataNascimentoFormatada ?? string.Empty; 
+                txt_dataNascimento.Text = clienteSelecionado.DataNascimentoFormatada ?? string.Empty;
                 txt_email.Text = clienteSelecionado.Email ?? string.Empty;
                 txt_historico.Text = clienteSelecionado.Historico ?? string.Empty;
 

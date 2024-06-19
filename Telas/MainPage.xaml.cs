@@ -1,7 +1,5 @@
 ﻿using LawForm.Model;
 using LawForm.Pdf;
-using System.Diagnostics;
-using System.Linq;
 using System.Windows;
 
 namespace LawForm
@@ -40,7 +38,7 @@ namespace LawForm
         {
             var gerarDocumentosNecessarios = new GerarDocumentosNecessarios();
             gerarDocumentosNecessarios.GerarPdf();
-             
+
         }
 
 

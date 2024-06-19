@@ -1,16 +1,14 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
+﻿using iText.IO.Image;
+using iText.Kernel.Colors;
+using iText.Kernel.Events;
+using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
-using iText.Kernel.Colors;
-using iText.Layout.Borders;
-using iText.Kernel.Geom;
-using iText.Kernel.Events;
-using iText.Kernel.Pdf.Canvas;
-using iText.IO.Image;
+using System.Diagnostics;
+using System.IO;
 
 namespace LawForm.Pdf
 {
