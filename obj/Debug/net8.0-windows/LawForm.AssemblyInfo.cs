@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LawForm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd27a28041d933688ddc1afd1d9d5b509a6e43ae")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+872fceb88b92ad87e9a2c46e037b747db4ed728d")]
 [assembly: System.Reflection.AssemblyProductAttribute("LawForm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LawForm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
