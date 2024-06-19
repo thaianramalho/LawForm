@@ -15,9 +15,6 @@ using LawForm.Model;
 
 namespace LawForm
 {
-    /// <summary>
-    /// Lógica interna para Login.xaml
-    /// </summary>
     public partial class Login : Window
     {
         public Login()
@@ -32,28 +29,24 @@ namespace LawForm
 
             using (DataContext context = new DataContext())
             {
-                bool userFound = context.User.Any(user => user.Nome == Username && user.Senha == Password);
+                var user = context.User.FirstOrDefault(u => u.Nome == Username && u.Senha == Password);
 
-                if (userFound)
+                if (user != null)
                 {
-
-                    GrantAccess();
+                    GrantAccess(user.Nome);
                     Close();
-
                 }
                 else
                 {
                     MessageBox.Show("Usuário ou senha incorretos.");
                 }
             }
-
         }
 
-        public void GrantAccess()
+        public void GrantAccess(string userName)
         {
-            MainWindow main = new MainWindow();
+            MainWindow main = new MainWindow(userName);
             main.Show();
         }
-
     }
 }

@@ -1,24 +1,19 @@
-﻿using System.Text;
+﻿using LawForm.Model;
+using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LawForm
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(string userName)
         {
             InitializeComponent();
+            // Atualizar os contadores com dados reais
+            advogadosCount.Text = GetAdvogadosCount().ToString();
+            clientesPFCount.Text = GetClientesPFCount().ToString();
+            clientesPJCount.Text = GetClientesPJCount().ToString();
+            userNameTextBlock.Text = $"Olá, {userName}";
         }
 
         private void advogadosScreen_Click(object sender, RoutedEventArgs e)
@@ -39,6 +34,28 @@ namespace LawForm
             clientesPJ.Show();
         }
 
-        
+        private int GetAdvogadosCount()
+        {
+            using (var context = new DataContext())
+            {
+                return context.Advogado.Count();
+            }
+        }
+
+        private int GetClientesPFCount()
+        {
+            using (var context = new DataContext())
+            {
+                return context.ClientePF.Count();
+            }
+        }
+
+        private int GetClientesPJCount()
+        {
+            using (var context = new DataContext())
+            {
+                return context.ClientePJ.Count();
+            }
+        }
     }
 }
