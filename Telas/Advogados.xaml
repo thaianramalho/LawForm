@@ -32,7 +32,7 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Row="0" Grid.Column="0" Margin="10,10,10,135" Grid.RowSpan="2">
+            <StackPanel Grid.Row="0" Grid.Column="0" Margin="10,10,10,105" Grid.RowSpan="2">
                 <Label Content="Nome" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <TextBox x:Name="txt_nome" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="22"/>
                 <Label Content="CPF" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -41,8 +41,9 @@
                 <TextBox x:Name="txt_email" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="22"/>
                 <Label Content="Cadastro Nacional dos Advogados" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <TextBox x:Name="txt_cna" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="22"/>
-                <Button x:Name="cadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="0,10,0,0" Click="Cadastrar_Click" IsDefault="true"/>
+                <Button x:Name="cadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="0,10,0,0" Click="Cadastrar_Click" IsDefault="true" Width="80"/>
                 <Button x:Name="atualizar" Content="Atualizar" HorizontalAlignment="Left" Margin="0,10,0,0" Click="Atualizar_Click" IsDefault="true" Visibility="Collapsed"/>
+                <Button x:Name="limpar" Content="Limpar" Click="Limpar_Click" IsDefault="true" Width="80" HorizontalAlignment="Left" Margin="0,10,0,0"/>
             </StackPanel>
 
             <DataGrid x:Name="dataGridAdvogados" AutoGenerateColumns="False" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"

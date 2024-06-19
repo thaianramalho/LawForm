@@ -85,7 +85,7 @@ namespace LawForm {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LawForm;V1.0.0.0;component/telas/login.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LawForm;component/telas/login.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Telas\Login.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

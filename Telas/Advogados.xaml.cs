@@ -139,5 +139,11 @@ namespace LawForm
             txt_cna.Clear();
             dataGridAdvogados.SelectedItem = null;
         }
+
+        private void Limpar_Click(object sender, RoutedEventArgs e)
+        {
+            LimparCampos();
+
+        }
     }
 }
