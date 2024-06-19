@@ -14,8 +14,6 @@ namespace LawForm.Model
         public DbSet<User> User { get; set; }
         public DbSet<Advogado> Advogado { get; set; }
         public DbSet<ClientePF> ClientePF { get; set; }
-        public object? Users { get; set; }
-        public object? Advogados { get; set; }
-        public object? ClientesPF { get; set; }
+        public DbSet<ClientePJ> ClientePJ { get; set; }
     }
 }

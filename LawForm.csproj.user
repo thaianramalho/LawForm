@@ -13,6 +13,9 @@
     <Compile Update="Telas\ClientesPF.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Telas\ClientesPJ.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Telas\Login.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Telas\ClientesPF.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Telas\ClientesPJ.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Telas\Login.xaml">

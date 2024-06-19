@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace LawForm.Model
 {
-    internal class ClientePJ
+    public class ClientePJ
     {
         [Key]
         public int Id { get; set; }
@@ -35,5 +30,7 @@ namespace LawForm.Model
         public required DateOnly DataNascimento { get; set; }
         public string? Email { get; set; }
         public required string Historico { get; set; }
+        public string DataNascimentoFormatada => DataNascimento.ToString("dd/MM/yyyy");
+
     }
 }
