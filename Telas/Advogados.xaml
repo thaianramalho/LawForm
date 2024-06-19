@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LawForm"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Gerenciamento de Advogados" Height="450" Width="800">
+        Title="Gerenciamento de Advogados" Height="450" Width="800" Icon="/Telas/logodv.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -41,12 +41,12 @@
                 <TextBox x:Name="txt_email" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="22"/>
                 <Label Content="Cadastro Nacional dos Advogados" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <TextBox x:Name="txt_cna" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="22"/>
-                <Button x:Name="cadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="0,10,0,0" Click="Cadastrar_Click"/>
-                <Button x:Name="atualizar" Content="Atualizar" HorizontalAlignment="Left" Margin="0,10,0,0" Click="Atualizar_Click" Visibility="Collapsed"/>
+                <Button x:Name="cadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="0,10,0,0" Click="Cadastrar_Click" IsDefault="true"/>
+                <Button x:Name="atualizar" Content="Atualizar" HorizontalAlignment="Left" Margin="0,10,0,0" Click="Atualizar_Click" IsDefault="true" Visibility="Collapsed"/>
             </StackPanel>
 
             <DataGrid x:Name="dataGridAdvogados" AutoGenerateColumns="False" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
-          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"
+          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" IsReadOnly="True"
           SelectionChanged="DataGridAdvogados_SelectionChanged"
           CanUserAddRows="False">
                 <DataGrid.Columns>

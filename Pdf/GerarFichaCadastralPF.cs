@@ -176,7 +176,7 @@ namespace LawForm.Pdf
                 Canvas canvas = new Canvas(pdfCanvas, new Rectangle(0, 0, pageSize.GetWidth(), pageSize.GetHeight()));
                 canvas.SetFontSize(12);
 
-                string imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\img\varejao-doc-logo.png");
+                string imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img/varejao-doc-logo.png");
                 if (File.Exists(imagePath))
                 {
                     ImageData imageData = ImageDataFactory.Create(imagePath);

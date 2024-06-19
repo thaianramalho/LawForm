@@ -21,14 +21,7 @@ namespace LawForm
             using (var context = new DataContext())
             {
                 var advogados = context.Advogado.ToList();
-                if (advogados.Any(a => a == null || string.IsNullOrWhiteSpace(a.Nome) || string.IsNullOrWhiteSpace(a.Cpf) || string.IsNullOrWhiteSpace(a.Email) || string.IsNullOrWhiteSpace(a.Cna)))
-                {
-                    MessageBox.Show("Existem dados inválidos na lista de advogados.");
-                }
-                else
-                {
-                    dataGridAdvogados.ItemsSource = advogados;
-                }
+                dataGridAdvogados.ItemsSource = advogados;
             }
         }
 

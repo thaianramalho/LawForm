@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="logo.png" />
     <None Remove="logodv.png" />
+    <None Remove="Telas\logodv.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +31,7 @@
   <ItemGroup>
     <Resource Include="img\logo.png" />
     <Resource Include="img\logodv.png" />
+    <Resource Include="Telas\logodv.png" />
   </ItemGroup>
 
 </Project>

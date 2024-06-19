@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\admin\source\repos\LawForm\App.xaml
-5516960917
+6120539054
 
-18-1600828703
+19-1063021873
 2301100930440
-Telas\Advogados.xaml;Telas\ClientesPF.xaml;Telas\ClientesPJ.xaml;Telas\Login.xaml;Telas\MainPage.xaml;
+Telas\Advogados.xaml;Telas\Cadastrar.xaml;Telas\ClientesPF.xaml;Telas\ClientesPJ.xaml;Telas\Login.xaml;Telas\MainPage.xaml;
 
 True
 

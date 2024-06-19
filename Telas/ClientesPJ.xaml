@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LawForm"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Gerenciamento de Clientes" Height="800" Width="1200">
+        Title="Gerenciamento de Clientes" Height="800" Width="1200" Icon="/Telas/logodv.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -137,7 +137,7 @@
             <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
                 <Label Content="Buscar:" VerticalAlignment="Center" Margin="0,0,10,0"/>
                 <TextBox x:Name="txtBuscar" Width="200" Margin="0,0,10,0"/>
-                <Button Content="Buscar" Click="Buscar_Click"/>
+                <Button Content="Buscar" Click="Buscar_Click" IsDefault="true"/>
                 <Button Content="Limpar Busca" Click="LimparBusca_Click" Margin="10,0,0,0"/>
             </StackPanel>
 

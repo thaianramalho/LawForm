@@ -148,3 +148,5 @@ C:\Users\admin\source\repos\LawForm\bin\Debug\net8.0-windows\ru\Microsoft.CodeAn
 C:\Users\admin\source\repos\LawForm\bin\Debug\net8.0-windows\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\admin\source\repos\LawForm\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\admin\source\repos\LawForm\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\Cadastrar.g.cs
+C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\Cadastrar.baml

@@ -10,6 +10,9 @@
     <Compile Update="Telas\Advogados.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Telas\Cadastrar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Telas\ClientesPF.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,6 +25,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Telas\Advogados.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Telas\Cadastrar.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Telas\ClientesPF.xaml">

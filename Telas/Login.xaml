@@ -6,15 +6,17 @@
         xmlns:local="clr-namespace:LawForm"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="Login" Height="425" Width="360" ResizeMode="NoResize" SizeToContent="Height">
+        Title="Login" Height="425" Width="360" ResizeMode="NoResize" SizeToContent="Height" Icon="/Telas/logodv.png">
     <Grid Height="425" VerticalAlignment="Top">
         <Image HorizontalAlignment="Center" Height="70" Margin="0,24,0,0" VerticalAlignment="Top" Width="244" Source="/img/logo.png"/>
         <Label Content="Usuário" HorizontalAlignment="Left" Margin="14,170,0,0" VerticalAlignment="Top" Height="31" Width="61" FontSize="14"/>
         <TextBox x:Name="login_user" HorizontalAlignment="Center" Margin="0,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="332" Height="25"/>
         <Label Content="Senha" HorizontalAlignment="Left" Margin="14,231,0,0" VerticalAlignment="Top" FontSize="14"/>
         <PasswordBox x:Name="pass_user" HorizontalAlignment="Center" Margin="0,257,0,0" VerticalAlignment="Top" Width="332" Height="25"/>
-        <Button x:Name="entrar" Content="Entrar" Margin="14,297,14,0" VerticalAlignment="Top" Height="32" Click="entrar_Click"/>
+        <Button x:Name="entrar" Content="Entrar" Margin="14,297,14,0" VerticalAlignment="Top" Height="32" Click="entrar_Click" IsDefault="true"/>
         <Label Content="Entre com os dados de acesso" HorizontalAlignment="Center" Margin="0,123,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <Button x:Name="cadastrar" Content="Cadastre-se" Margin="136,374,136,0" VerticalAlignment="Top" Height="25" Click="cadastrar_Click"/>
+        <Label Content="Não possui uma conta?" HorizontalAlignment="Center" Margin="0,348,0,0" VerticalAlignment="Top" Width="140"/>
 
     </Grid>
 </Window>

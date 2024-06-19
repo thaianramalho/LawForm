@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using LawForm.Model;
+using LawForm.Telas;
 
 namespace LawForm
 {
@@ -24,29 +15,44 @@ namespace LawForm
 
         private void entrar_Click(object sender, RoutedEventArgs e)
         {
-            var Username = login_user.Text;
-            var Password = pass_user.Password;
+            var username = login_user.Text;
+            var password = pass_user.Password;
 
-            using (DataContext context = new DataContext())
+            try
             {
-                var user = context.User.FirstOrDefault(u => u.Nome == Username && u.Senha == Password);
+                using (DataContext context = new DataContext())
+                {
+                    var user = context.User.FirstOrDefault(u => u.Nome == username && u.Senha == password);
 
-                if (user != null)
-                {
-                    GrantAccess(user.Nome);
-                    Close();
+                    if (user != null)
+                    {
+                        GrantAccess(user.Nome);
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuário ou senha incorretos.");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Usuário ou senha incorretos.");
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao acessar o banco de dados: " + ex.Message);
             }
         }
 
-        public void GrantAccess(string userName)
+        private void GrantAccess(string userName)
         {
             MainWindow main = new MainWindow(userName);
             main.Show();
+        }
+
+        private void cadastrar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            Cadastrar telaCadastro = new Cadastrar();
+            telaCadastro.Show();
+            telaCadastro.Closed += (s, args) => this.Show();
         }
     }
 }

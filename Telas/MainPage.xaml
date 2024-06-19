@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="DeVence Law" Height="600" Width="900"
-        Background="#F3FFFF" ResizeMode="NoResize">
+        Background="#F3FFFF" ResizeMode="NoResize" Icon="/Telas/logodv.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
