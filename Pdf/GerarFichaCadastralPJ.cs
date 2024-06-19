@@ -34,7 +34,7 @@ namespace LawForm.Pdf
                 Document document = new Document(pdf, PageSize.A4);
                 document.SetMargins(160, 25, 100, 25);
 
-                pdf.AddEventHandler(PdfDocumentEvent.END_PAGE, new HeaderFooterEventHandler(_clientePJ.NomeEmpresa));
+                pdf.AddEventHandler(PdfDocumentEvent.END_PAGE, new HeaderFooterEventHandler(_clientePJ.NomeResponsavel));
 
                 Color titleColor = new DeviceRgb(0, 0, 0);
                 Color headerColor = new DeviceRgb(90, 90, 90);  // Cinza médio
@@ -150,11 +150,11 @@ namespace LawForm.Pdf
 
         private class HeaderFooterEventHandler : IEventHandler
         {
-            private readonly string _nomeEmpresa;
+            private readonly string _nomeResponsavel;
 
-            public HeaderFooterEventHandler(string nomeEmpresa)
+            public HeaderFooterEventHandler(string nomeResponsavel)
             {
-                _nomeEmpresa = nomeEmpresa;
+                _nomeResponsavel = nomeResponsavel;
             }
 
             public void HandleEvent(Event @event)
@@ -185,7 +185,7 @@ namespace LawForm.Pdf
                 }
 
                 canvas.ShowTextAligned(new Paragraph("______________________________"), xFooter, yFooter, TextAlignment.CENTER);
-                canvas.ShowTextAligned(new Paragraph(_nomeEmpresa), xFooter, yFooter - 15, TextAlignment.CENTER);
+                canvas.ShowTextAligned(new Paragraph(_nomeResponsavel), xFooter, yFooter - 15, TextAlignment.CENTER);
 
                 canvas.Close();
             }

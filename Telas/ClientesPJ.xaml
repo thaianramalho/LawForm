@@ -146,7 +146,7 @@
                       SelectionChanged="DataGridClientesPJ_SelectionChanged"
                       CanUserAddRows="False" IsReadOnly="True" RowHeight="25">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="*"/>
+                    <DataGridTextColumn Header="Nome" Binding="{Binding NomeEmpresa}" Width="*"/>
                     <DataGridTextColumn Header="Filiação Pai" Binding="{Binding FiliacaPai}" Width="*"/>
                     <DataGridTextColumn Header="Filiação Mãe" Binding="{Binding FiliacaoMae}" Width="*"/>
                     <DataGridTextColumn Header="Nacionalidade" Binding="{Binding Nacionalidade}" Width="*"/>
