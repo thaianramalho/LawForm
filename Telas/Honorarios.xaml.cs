@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using LawForm.Model;
+﻿using LawForm.Model;
 using Microsoft.EntityFrameworkCore;
+using System.Windows;
 
 namespace LawForm.Telas
 {
@@ -58,6 +55,11 @@ namespace LawForm.Telas
                 }));
             }
 
+            allHonorarios = allHonorarios
+                .OrderBy(h => h.Pago)
+                .ThenBy(h => h.DataVencimento)
+                .ToList();
+
             HonorariosDataGrid.ItemsSource = allHonorarios;
         }
 
@@ -65,7 +67,7 @@ namespace LawForm.Telas
         {
             var cadastroHonorarioWindow = new CadastroHonorario();
             cadastroHonorarioWindow.ShowDialog();
-            LoadHonorarios(); // Recarrega a lista após fechar a tela de cadastro
+            LoadHonorarios();
         }
 
         private void EditarPagamentoButton_Click(object sender, RoutedEventArgs e)
