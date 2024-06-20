@@ -102,6 +102,11 @@ namespace LawForm.Telas
             HonorariosDataGrid.ItemsSource = honorariosRecebidos;
             subtituloPagina.Text = "Honorários Recebidos";
         }
+
+        private void HonorariosDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
     public class HonorarioViewModel
@@ -113,22 +118,7 @@ namespace LawForm.Telas
         public DateTime DataVencimento { get; set; }
         public bool Pago { get; set; }
         public int PagamentoId { get; set; }
-    }
+        public string BackgroundPagamentoAtrasado => !Pago && DataVencimento < DateTime.Now ? "#33FF0000" : "Transparent";
 
-    public class DateToPastConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value is DateTime date)
-            {
-                return date < DateTime.Now;
-            }
-            return false;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
