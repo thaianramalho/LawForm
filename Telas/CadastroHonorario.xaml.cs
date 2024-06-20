@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using LawForm.Model;
 using System.Windows;
-using LawForm.Model;
 
 namespace LawForm.Telas
 {
@@ -22,13 +19,15 @@ namespace LawForm.Telas
             var clientesPF = _context.ClientePF.Select(c => new ClienteViewModel
             {
                 Id = c.Id,
-                DisplayName = $"{c.Nome} - {c.DocumentoCPF}"
+                DisplayName = $"{c.Nome} - {c.DocumentoCPF}",
+                TipoCliente = "PF"
             }).ToList();
 
             var clientesPJ = _context.ClientePJ.Select(c => new ClienteViewModel
             {
                 Id = c.Id,
-                DisplayName = $"{c.NomeEmpresa} - {c.Cnpj}"
+                DisplayName = $"{c.NomeEmpresa} - {c.Cnpj}",
+                TipoCliente = "PJ"
             }).ToList();
 
             var allClientes = new List<ClienteViewModel>();
@@ -48,7 +47,7 @@ namespace LawForm.Telas
                 var dataInicio = DataInicioPicker.SelectedDate.Value;
                 decimal valorParcela = valorTotalHonorario / numeroParcelas;
 
-                if (_context.ClientePF.Any(c => c.Id == selectedCliente.Id))
+                if (selectedCliente.TipoCliente == "PF" && _context.ClientePF.Any(c => c.Id == selectedCliente.Id))
                 {
                     var novoHonorarioPF = new ClientePFHonorario
                     {
@@ -71,7 +70,7 @@ namespace LawForm.Telas
 
                     _context.ClientePFHonorarios.Add(novoHonorarioPF);
                 }
-                else if (_context.ClientePJ.Any(c => c.Id == selectedCliente.Id))
+                else if (selectedCliente.TipoCliente == "PJ" && _context.ClientePJ.Any(c => c.Id == selectedCliente.Id))
                 {
                     var novoHonorarioPJ = new ClientePJHonorario
                     {
@@ -109,5 +108,6 @@ namespace LawForm.Telas
     {
         public int Id { get; set; }
         public string DisplayName { get; set; }
+        public string TipoCliente { get; set; }
     }
 }
