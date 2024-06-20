@@ -10,7 +10,23 @@
             <TextBox Name="ValorPagamentoTextBox" Margin="0,0,0,10" />
 
             <TextBlock Text="Data do Pagamento:" />
-            <DatePicker Name="DataPagamentoPicker" Margin="0,0,0,10" />
+            <DatePicker Name="DataPagamentoPicker" SelectedDateFormat="Short" Margin="0,0,0,20">
+                <DatePicker.Resources>
+                    <Style TargetType="DatePickerTextBox">
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="DatePickerTextBox">
+                                    <TextBox x:Name="PART_TextBox"
+                                         Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource AncestorType=DatePicker}, StringFormat='dd/MM/yyyy'}"
+                                         Background="{TemplateBinding Background}"
+                                         BorderBrush="{TemplateBinding BorderBrush}"
+                                         BorderThickness="{TemplateBinding BorderThickness}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
 
             <CheckBox Name="PagoCheckBox" Content="Pago" Margin="0,0,0,20" />
 
