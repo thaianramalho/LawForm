@@ -1,23 +1,30 @@
 ﻿<Window x:Class="LawForm.Telas.Honorarios"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Honorários" Height="500" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Telas/logodv.png">
+        Title="Honorários" Height="520" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Telas/logodv.png">
     <Grid Margin="0,0,0,4">
         <StackPanel Margin="20,20,20,0">
-            <TextBlock Text="Honorários a Receber" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" />
+            <TextBlock Text="Honorários" FontSize="24" FontWeight="Bold" Foreground="#084F49" HorizontalAlignment="Center" Margin="0,0,0,20" />
+
+            <TextBlock x:Name="subtituloPagina" Text="Todos os Honorários" FontSize="16" FontWeight="Bold" Foreground="#084F49" HorizontalAlignment="Left" Margin="0,0,0,20" />
 
             <DataGrid Name="HonorariosDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" Height="300" Margin="0,0,0,20">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="*" />
                     <DataGridTextColumn Header="CPF/CNPJ" Binding="{Binding Documento}" Width="*" />
+                    <DataGridTextColumn Header="Telefones" Binding="{Binding Telefones}" Width="*" />
                     <DataGridTextColumn Header="Valor" Binding="{Binding ValorHonorario}" Width="*" />
-                    <DataGridTextColumn Header="Data de Vencimento" Binding="{Binding DataVencimento}" Width="*" />
+                    <DataGridTextColumn Header="Data de Vencimento" Binding="{Binding DataVencimento, StringFormat={}{0:dd/MM/yyyy}}" Width="*" />
                     <DataGridCheckBoxColumn Header="Pago" Binding="{Binding Pago}" Width="*" />
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button Content="Cadastrar Honorário" Click="CadastrarHonorarioButton_Click" Width="150" HorizontalAlignment="Right" Margin="0,0,0,10" />
-            <Button Content="Editar Pagamento" Click="EditarPagamentoButton_Click" Width="150" HorizontalAlignment="Right" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Honorários a Receber" Click="HonorariosAReceberButton_Click" Width="150" Margin="5,0" />
+                <Button Content="Honorários Recebidos" Click="HonorariosRecebidosButton_Click" Width="150" Margin="5,0" />
+                <Button Content="Cadastrar Honorário" Click="CadastrarHonorarioButton_Click" Width="150" Margin="5,0" />
+                <Button Content="Editar Pagamento" Click="EditarPagamentoButton_Click" Width="150" Margin="5,0" />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

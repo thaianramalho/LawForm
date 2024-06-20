@@ -7,6 +7,7 @@ namespace LawForm.Telas
     public partial class Honorarios : Window
     {
         private DataContext _context;
+        private List<HonorarioViewModel> _allHonorarios;
 
         public Honorarios()
         {
@@ -27,16 +28,17 @@ namespace LawForm.Telas
                 .Include(h => h.Pagamentos)
                 .ToList();
 
-            var allHonorarios = new List<HonorarioViewModel>();
+            _allHonorarios = new List<HonorarioViewModel>();
 
             foreach (var honorarioPF in honorariosPF)
             {
-                allHonorarios.AddRange(honorarioPF.Pagamentos.Select(p => new HonorarioViewModel
+                _allHonorarios.AddRange(honorarioPF.Pagamentos.Select(p => new HonorarioViewModel
                 {
                     Nome = honorarioPF.ClientePF.Nome,
                     Documento = honorarioPF.ClientePF.DocumentoCPF,
+                    Telefones = honorarioPF.ClientePF.Telefones,
                     ValorHonorario = p.Valor,
-                    DataVencimento = p.DataPagamento.ToString("dd/MM/yyyy"),
+                    DataVencimento = p.DataPagamento,
                     Pago = p.Pago,
                     PagamentoId = p.Id
                 }));
@@ -44,23 +46,24 @@ namespace LawForm.Telas
 
             foreach (var honorarioPJ in honorariosPJ)
             {
-                allHonorarios.AddRange(honorarioPJ.Pagamentos.Select(p => new HonorarioViewModel
+                _allHonorarios.AddRange(honorarioPJ.Pagamentos.Select(p => new HonorarioViewModel
                 {
                     Nome = honorarioPJ.ClientePJ.NomeEmpresa,
                     Documento = honorarioPJ.ClientePJ.Cnpj,
+                    Telefones = honorarioPJ.ClientePJ.Telefones,
                     ValorHonorario = p.Valor,
-                    DataVencimento = p.DataPagamento.ToString("dd/MM/yyyy"),
+                    DataVencimento = p.DataPagamento,
                     Pago = p.Pago,
                     PagamentoId = p.Id
                 }));
             }
 
-            allHonorarios = allHonorarios
-                .OrderBy(h => h.Pago)
-                .ThenBy(h => h.DataVencimento)
+            _allHonorarios = _allHonorarios
+                .OrderBy(h => h.DataVencimento)
+                .ThenBy(h => h.Pago)
                 .ToList();
 
-            HonorariosDataGrid.ItemsSource = allHonorarios;
+            HonorariosDataGrid.ItemsSource = _allHonorarios;
         }
 
         private void CadastrarHonorarioButton_Click(object sender, RoutedEventArgs e)
@@ -83,14 +86,29 @@ namespace LawForm.Telas
                 }
             }
         }
+
+        private void HonorariosAReceberButton_Click(object sender, RoutedEventArgs e)
+        {
+            var honorariosAReceber = _allHonorarios.Where(h => !h.Pago).ToList();
+            HonorariosDataGrid.ItemsSource = honorariosAReceber;
+            subtituloPagina.Text = "Honorários a Receber";
+        }
+
+        private void HonorariosRecebidosButton_Click(object sender, RoutedEventArgs e)
+        {
+            var honorariosRecebidos = _allHonorarios.Where(h => h.Pago).ToList();
+            HonorariosDataGrid.ItemsSource = honorariosRecebidos;
+            subtituloPagina.Text = "Honorários Recebidos";
+        }
     }
 
     public class HonorarioViewModel
     {
         public string Nome { get; set; }
         public string Documento { get; set; }
+        public string Telefones { get; set; }
         public decimal ValorHonorario { get; set; }
-        public string DataVencimento { get; set; }
+        public DateTime DataVencimento { get; set; }
         public bool Pago { get; set; }
         public int PagamentoId { get; set; }
     }
