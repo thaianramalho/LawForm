@@ -1,6 +1,8 @@
 ﻿using LawForm.Model;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using System.Windows;
+using System.Windows.Data;
 
 namespace LawForm.Telas
 {
@@ -111,5 +113,22 @@ namespace LawForm.Telas
         public DateTime DataVencimento { get; set; }
         public bool Pago { get; set; }
         public int PagamentoId { get; set; }
+    }
+
+    public class DateToPastConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is DateTime date)
+            {
+                return date < DateTime.Now;
+            }
+            return false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

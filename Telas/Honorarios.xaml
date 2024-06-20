@@ -1,7 +1,18 @@
 ﻿<Window x:Class="LawForm.Telas.Honorarios"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:LawForm.Telas"
         Title="Honorários" Height="520" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Telas/logodv.png">
+    <Window.Resources>
+        <local:DateToPastConverter x:Key="DateToPastConverter"/>
+        <Style TargetType="DataGridRow">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding DataVencimento, Converter={StaticResource DateToPastConverter}}" Value="True">
+                    <Setter Property="Background" Value="#FF9A0505"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid Margin="0,0,0,4">
         <StackPanel Margin="20,20,20,0">
             <TextBlock Text="Honorários" FontSize="24" FontWeight="Bold" Foreground="#084F49" HorizontalAlignment="Center" Margin="0,0,0,20" />

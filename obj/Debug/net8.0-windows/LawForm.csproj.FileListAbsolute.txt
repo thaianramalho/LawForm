@@ -157,3 +157,4 @@ C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\Honorarios.ba
 C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\Honorarios.g.cs
 C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\EditarPagamentoHonorario.baml
 C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\EditarPagamentoHonorario.g.cs
+C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
