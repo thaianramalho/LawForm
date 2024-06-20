@@ -13,10 +13,19 @@
     <Compile Update="Telas\Cadastrar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Telas\CadastroHonorario.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Telas\ClientesPF.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Telas\ClientesPJ.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\EditarPagamentoHonorario.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Honorarios.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Telas\Login.xaml.cs">
@@ -30,10 +39,19 @@
     <Page Update="Telas\Cadastrar.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Telas\CadastroHonorario.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Telas\ClientesPF.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Telas\ClientesPJ.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Telas\EditarPagamentoHonorario.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Telas\Honorarios.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Telas\Login.xaml">

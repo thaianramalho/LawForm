@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\admin\source\repos\LawForm\App.xaml
-6120539054
+91578437554
 
-172091847960
+23-702276976
 2301100930440
-Telas\Advogados.xaml;Telas\Cadastrar.xaml;Telas\ClientesPF.xaml;Telas\ClientesPJ.xaml;Telas\Login.xaml;Telas\MainPage.xaml;
+Telas\Advogados.xaml;Telas\Cadastrar.xaml;Telas\CadastroHonorario.xaml;Telas\ClientesPF.xaml;Telas\ClientesPJ.xaml;Telas\EditarPagamentoHonorario.xaml;Telas\Honorarios.xaml;Telas\Login.xaml;Telas\MainPage.xaml;
 
 False
 

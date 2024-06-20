@@ -151,3 +151,9 @@ C:\Users\admin\source\repos\LawForm\bin\Debug\net8.0-windows\zh-Hant\Microsoft.C
 C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\Cadastrar.g.cs
 C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\Cadastrar.baml
 C:\Users\admin\source\repos\LawForm\bin\Debug\net8.0-windows\img\favicon.ico
+C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\CadastroHonorario.baml
+C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\CadastroHonorario.g.cs
+C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\Honorarios.baml
+C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\Honorarios.g.cs
+C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\EditarPagamentoHonorario.baml
+C:\Users\admin\source\repos\LawForm\obj\Debug\net8.0-windows\Telas\EditarPagamentoHonorario.g.cs

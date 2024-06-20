@@ -1,5 +1,6 @@
 ﻿using LawForm.Model;
 using LawForm.Pdf;
+using LawForm.Telas;
 using System.Windows;
 
 namespace LawForm
@@ -65,6 +66,12 @@ namespace LawForm
             {
                 return context.ClientePJ.Count();
             }
+        }
+
+        private void honorarios_Click(object sender, RoutedEventArgs e)
+        {
+            Honorarios honorarios = new Honorarios();
+            honorarios.Show(); 
         }
     }
 }

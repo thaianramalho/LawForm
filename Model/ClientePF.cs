@@ -18,7 +18,7 @@ namespace LawForm.Model
         public string? DocumentoPIS { get; set; }
         public string? DocumentoCTPS { get; set; }
         public string? DocumentoSerie { get; set; }
-        public required string Endereco {  get; set; }
+        public required string Endereco { get; set; }
         public required string Telefones { get; set; }
         public required string Naturalidade { get; set; }
         public required DateOnly DataNascimento { get; set; }

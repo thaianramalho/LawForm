@@ -20,7 +20,8 @@
             <Button Content="Advogados" x:Name="advogadosScreen" Background="#084F49" Foreground="White" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="180" Margin="10" Click="advogadosScreen_Click" Height="25"/>
             <Button Content="Clientes PF" x:Name="clientesPFScreen" Background="#084F49" Foreground="White" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="180" Margin="10" Click="clientesPFScreen_Click" Height="25"/>
             <Button Content="Clientes PJ" x:Name="clientesPJScreen" Background="#084F49" Foreground="White" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="180" Margin="10" Click="clientesPJScreen_Click" Height="25"/>
-            <Button Content="Lista de Documentos" x:Name="clientesPJScreen_Copiar" Background="#084F49" Foreground="White" BorderBrush="{x:Null}" Width="180" Click="emitirListaDocumentos_Click" Height="25"/>
+            <Button Content="Lista de Documentos" x:Name="clientesPJScreen_Copiar" Background="#084F49" Foreground="White" BorderBrush="{x:Null}" Width="180" Margin="10" Click="emitirListaDocumentos_Click" Height="25"/>
+            <Button Content="Honorários" x:Name="honorarios" Background="#084F49" Foreground="White" BorderBrush="{x:Null}" Width="180" Margin="10" Click="honorarios_Click" Height="25"/>
         </StackPanel>
 
         <!-- Main Content -->

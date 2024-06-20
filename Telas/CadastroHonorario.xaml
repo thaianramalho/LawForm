@@ -1,0 +1,24 @@
+﻿<Window x:Class="LawForm.Telas.CadastroHonorario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cadastro de Honorário" Height="450" Width="500">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Cadastro de Honorário" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" />
+
+            <TextBlock Text="Cliente:" />
+            <ComboBox Name="ClienteComboBox" Margin="0,0,0,10" DisplayMemberPath="DisplayName" />
+
+            <TextBlock Text="Valor Total do Honorário:" />
+            <TextBox Name="ValorTotalHonorarioTextBox" Margin="0,0,0,10" />
+
+            <TextBlock Text="Número de Parcelas:" />
+            <TextBox Name="NumeroParcelasTextBox" Margin="0,0,0,10" />
+
+            <TextBlock Text="Data de Início:" />
+            <DatePicker Name="DataInicioPicker" Margin="0,0,0,20" />
+
+            <Button Content="Cadastrar" Click="CadastrarButton_Click" Width="100" HorizontalAlignment="Right" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,20 @@
+﻿<Window x:Class="LawForm.Telas.EditarPagamentoHonorario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Editar Pagamento" Height="250" Width="400">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Editar Pagamento" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" />
+
+            <TextBlock Text="Valor do Pagamento:" />
+            <TextBox Name="ValorPagamentoTextBox" Margin="0,0,0,10" />
+
+            <TextBlock Text="Data do Pagamento:" />
+            <DatePicker Name="DataPagamentoPicker" Margin="0,0,0,10" />
+
+            <CheckBox Name="PagoCheckBox" Content="Pago" Margin="0,0,0,20" />
+
+            <Button Content="Salvar" Click="SalvarButton_Click" Width="100" HorizontalAlignment="Right" />
+        </StackPanel>
+    </Grid>
+</Window>
