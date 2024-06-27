@@ -32,7 +32,7 @@ namespace LawForm.Pdf
             {
                 PdfDocument pdf = new PdfDocument(writer);
                 Document document = new Document(pdf, PageSize.A4);
-                document.SetMargins(120, 25, 100, 25);
+                document.SetMargins(150, 25, 100, 25);
 
                 pdf.AddEventHandler(PdfDocumentEvent.END_PAGE, new HeaderFooterEventHandler(_clientePJ.NomeResponsavel));
 

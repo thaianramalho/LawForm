@@ -23,7 +23,7 @@ namespace LawForm.Pdf
             {
                 PdfDocument pdf = new PdfDocument(writer);
                 Document document = new Document(pdf, PageSize.A4);
-                document.SetMargins(120, 25, 100, 25);
+                document.SetMargins(150, 25, 100, 25);
 
                 pdf.AddEventHandler(PdfDocumentEvent.END_PAGE, new HeaderFooterEventHandler());
 
@@ -165,8 +165,8 @@ namespace LawForm.Pdf
                 {
                     ImageData imageData = ImageDataFactory.Create(imagePath);
                     Image logo = new Image(imageData);
-                    logo.ScaleToFit(200f, 200f);
-                    logo.SetFixedPosition(xHeader - 100, yHeader - 50);
+                    logo.ScaleToFit(300f, 300f);
+                    logo.SetFixedPosition(xHeader - 150, yHeader - 100);
                     canvas.Add(logo);
                 }
                 canvas.Close();
