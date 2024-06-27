@@ -56,6 +56,10 @@ namespace LawForm.Pdf
 
                 document.Add(new Paragraph("\n"));
 
+                Table advogadosTable = new Table(UnitValue.CreatePercentArray(new float[] { 1, 3 })).UseAllAvailableWidth().SetBorder(Border.NO_BORDER);
+                AddClienteInfo(advogadosTable, "Advogado(s):", "[  ] Dr. Rodrigo Varejão - [  ] Dr. Ivo - [  ] Dra. Raíssa", textColor);
+                document.Add(advogadosTable);
+
                 AddSectionTitle(document, "Dados Pessoais", backgroundColor, whiteColor);
 
                 Table dadosPessoaisTable = new Table(UnitValue.CreatePercentArray(new float[] { 1, 3 })).UseAllAvailableWidth().SetBorder(Border.NO_BORDER);
@@ -181,8 +185,8 @@ namespace LawForm.Pdf
                 {
                     ImageData imageData = ImageDataFactory.Create(imagePath);
                     Image logo = new Image(imageData);
-                    logo.ScaleToFit(200f, 200f);
-                    logo.SetFixedPosition(xHeader - 100, yHeader - 50);
+                    logo.ScaleToFit(300f, 300f);
+                    logo.SetFixedPosition(xHeader - 150, yHeader - 100);
                     canvas.Add(logo);
                 }
 
